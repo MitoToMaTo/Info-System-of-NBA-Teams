@@ -10,30 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.IO; // Не забыть прописать!!!!
 
 namespace InfoSystemNBATeams
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для NBAWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class NBAWindow : Window
     {
-        public MainWindow()
+        public NBAWindow()
         {
             InitializeComponent();
-        }
-        
-        private void updatePlayerInfo_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void returnToTeam_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
