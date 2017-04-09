@@ -134,12 +134,7 @@ namespace InfoSystemNBATeams
 
         public string PlayerInfo()
         {
-            return string.Format(" Имя игрока: {0} \n Номер игрока: {1} \n Позиция: {2} \n Рост: {3}m \n Вес: {4}kg \n Год драфта: {5} ", Name, NumberOfPlayer, Position, Growth, Weight, YearOfDraft);
-        }
-        
-        public string PlayerStats()
-        {
-            return string.Format(" Очков в среднем за игру: {0} \n Подборов в среднем за игру: {1} \n Передач в среднем за игру: {2} \n Перехватов в среднем за игру: {3} \n Блоков в среднем за игру: {4} \n Потерь в среднем за игру: {5} \n Процент попаданий с игры: {6}% \n Процент попаданий штрафных: {7}% \n Процент попаданий трехочковых: {8}% ", PPG, RPG, APG, SPG, BPG, TPG, FGPercentage, FTPercentage, ThreeptPercentage);
+            return string.Format("Имя игрока: {0} \nНомер игрока: {1} \nПозиция: {2} \nРост: {3}cm \nВес: {4}kg \nГод драфта: {5} \nОчков в среднем за игру: {6} \nПодборов в среднем за игру: {7} \nПередач в среднем за игру: {8} \nПерехватов в среднем за игру: {9}\n Блоков в среднем за игру: {10} \nПотерь в среднем за игру: {11} \nПроцент попаданий с игры: {12}% \nПроцент попаданий штрафных: {13}% \nПроцент попаданий трехочковых: {14}% ", Name, NumberOfPlayer, Position, Growth, Weight, YearOfDraft, PPG, RPG, APG, SPG, BPG, TPG, FGPercentage, FTPercentage, ThreeptPercentage);
         }
     }
 }

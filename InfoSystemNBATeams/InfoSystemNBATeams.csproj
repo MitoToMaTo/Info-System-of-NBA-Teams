@@ -61,6 +61,7 @@
     <Compile Include="NBAWindow.xaml.cs">
       <DependentUpon>NBAWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Team.cs" />
     <Compile Include="TeamWindow.xaml.cs">
       <DependentUpon>TeamWindow.xaml</DependentUpon>
     </Compile>
