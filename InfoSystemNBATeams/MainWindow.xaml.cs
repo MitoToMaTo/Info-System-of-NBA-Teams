@@ -74,32 +74,31 @@ namespace InfoSystemNBATeams
                 
                 while (!sr.EndOfStream)
                 {
-                        string playerName = sr.ReadLine();
-                        string[] orgInfo = sr.ReadLine().Split(',');
-                        int num = int.Parse(orgInfo[0]);
-                        string position = orgInfo[1];
-                        int growth = int.Parse(orgInfo[2]);
-                        int weight = int.Parse(orgInfo[3]);
-                        int yearOfDraft = int.Parse(sr.ReadLine());
-                        string[] stats = sr.ReadLine().Split(' ');
-                        double pts = double.Parse(stats[0]);
-                        double rbs = double.Parse(stats[1]);
-                        double ast = double.Parse(stats[2]);
-                        double stl = double.Parse(stats[3]);
-                        double blk = double.Parse(stats[4]);
-                        double to = double.Parse(stats[5]);
-                        double fg = double.Parse(stats[6]);
-                        double ft = double.Parse(stats[7]);
-                        double tp = double.Parse(stats[8]);
+                    string playerName = sr.ReadLine();
+                    string[] orgInfo = sr.ReadLine().Split(',');
+                    int num = int.Parse(orgInfo[0]);
+                    string position = orgInfo[1];
+                    int growth = int.Parse(orgInfo[2]);
+                    int weight = int.Parse(orgInfo[3]);
+                    int yearOfDraft = int.Parse(sr.ReadLine());
+                    string[] stats = sr.ReadLine().Split(' ');
+                    double pts = double.Parse(stats[0]);
+                    double rbs = double.Parse(stats[1]);
+                    double ast = double.Parse(stats[2]);
+                    double stl = double.Parse(stats[3]);
+                    double blk = double.Parse(stats[4]);
+                    double to = double.Parse(stats[5]);
+                    double fg = double.Parse(stats[6]);
+                    double ft = double.Parse(stats[7]);
+                    double tp = double.Parse(stats[8]);
                     sr.ReadLine();
 
-                        Player player = new Player(playerName, num, position, growth, weight, yearOfDraft, pts, rbs, ast, stl, blk, fg, ft, tp, to);
-                        if (item.ToString() == playerName)
-                        {
-                            playerStats.Items.Add(player.PlayerInfo());
-                        }
+                    Player player = new Player(playerName, num, position, growth, weight, yearOfDraft, pts, rbs, ast, stl, blk, fg, ft, tp, to);
+                    if (item.ToString() == playerName)
+                    {
+                        playerStats.Items.Add(player.PlayerInfo());
+                    }
                 }
-                
             }
         }
     }

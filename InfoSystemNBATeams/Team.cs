@@ -36,14 +36,14 @@ namespace InfoSystemNBATeams
             set { _loses = value; }
         }
 
-        private List<string> _players; 
-        public List<string> Players
+        private List<Player> _players; 
+        public List<Player> Players
         {
             get { return _players; }
             set { _players = value; }
         }
 
-        public Team (string name, string nameOfCoach, int wins, int loses, List<string> players)
+        public Team (string name, string nameOfCoach, int wins, int loses, List<Player> players)
         {
             Name = name;
             NameOfCoach = nameOfCoach;
@@ -54,7 +54,17 @@ namespace InfoSystemNBATeams
 
         public string TeamInfo()
         {
-            return string.Format("Команда: {0}\n Тренер: {1}\n Побед-поражений:{2}-{3}\n Состав: {4}", Name, NameOfCoach, Wins, Loses, Players);
+            return string.Format("Команда: {0}\nТренер: {1}\nПобед-поражений: {2}-{3}\nСостав: {4}", Name, NameOfCoach, Wins, Loses, PlayersNames());
+        }
+
+        public string PlayersNames()
+        {
+            string name = "\n";
+            foreach (Player player in Players)
+            {
+                name = name + player.Name + "\n";
+            }
+            return name;
         }
     }
 }
