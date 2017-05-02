@@ -58,6 +58,9 @@
     <Compile Include="ConferenceWindow.xaml.cs">
       <DependentUpon>ConferenceWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="editStats.xaml.cs">
+      <DependentUpon>editStats.xaml</DependentUpon>
+    </Compile>
     <Compile Include="NBAWindow.xaml.cs">
       <DependentUpon>NBAWindow.xaml</DependentUpon>
     </Compile>
@@ -66,6 +69,10 @@
       <DependentUpon>TeamWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="ConferenceWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="editStats.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
