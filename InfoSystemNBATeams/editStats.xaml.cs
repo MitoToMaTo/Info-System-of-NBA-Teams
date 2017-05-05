@@ -22,7 +22,7 @@ namespace InfoSystemNBATeams
     /// </summary>
     public partial class editStats : Window
     {
-        List<Player> players = new List<Player>();
+
         List<Team> teams = new List<Team>();
 
         public editStats()
@@ -33,7 +33,6 @@ namespace InfoSystemNBATeams
         private void createNewPlayer_Click(object sender, RoutedEventArgs e)
         {
             teams.Clear();
-            players.Clear(); 
 
             string nameOfPlayer = name.Text;
             int numOfPlayer = int.Parse(number.Text);
@@ -63,6 +62,8 @@ namespace InfoSystemNBATeams
             {
                 while (!sr.EndOfStream)
                 {
+                    List<Player> players = new List<Player>();
+
                     players.Clear();
                     string teamName = sr.ReadLine();
                     if (nameOfTeam == teamName)
