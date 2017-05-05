@@ -66,5 +66,21 @@ namespace InfoSystemNBATeams
             }
             return name;
         }
+
+        public string TeamInfoFile()
+        {
+            return string.Format("{0}\n{1}\n{2}-{3}\n\n{4}", Name, NameOfCoach, Wins, Loses, PlayersInfo());
+        }
+
+        public string PlayersInfo()
+        {
+            string massive = "";
+            foreach (Player player in Players)
+            {
+                string mass = player.PlayerInfoFile();
+                massive = massive + mass;
+            }
+            return massive;
+        }
     }
 }

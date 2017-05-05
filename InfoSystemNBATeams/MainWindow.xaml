@@ -18,7 +18,7 @@
         <ListBox x:Name="rosterList" HorizontalAlignment="Left" Height="282" Margin="10,10,0,0" VerticalAlignment="Top" Width="131"/>
         <ListBox x:Name="playerStats" Grid.Column="1" HorizontalAlignment="Left" Height="282" Margin="10,10,0,0" VerticalAlignment="Top" Width="346"/>
         <Button x:Name="showPlayerStats" Content="Статистика" HorizontalAlignment="Left" Height="47" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="131" Click="showPlayerStats_Click"/>
-        <Button x:Name="editPlayerStats" Content="Изменить стату" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="112" Height="47" Click="editPlayerStats_Click"/>
+        <Button x:Name="editPlayerStats" Content="Добавить игрока" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="112" Height="47" Click="editPlayerStats_Click"/>
 
     </Grid>
 </Window>

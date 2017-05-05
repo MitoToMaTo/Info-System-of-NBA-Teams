@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InfoSystemNBATeams"
         mc:Ignorable="d"
-        Title="editStats" Height="300" Width="300">
+        Title="editStats" Height="400" Width="300">
     <Grid>
         <TextBox x:Name="name" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="149,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="23" Width="109" Text="Имя игрока"/>
@@ -14,15 +14,17 @@
         <TextBox x:Name="position" HorizontalAlignment="Left" Height="23" Margin="10,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="149,66,0,0" TextWrapping="Wrap" Text="Позиция" VerticalAlignment="Top" Height="23" Width="109"/>
         <TextBox x:Name="heightWeight" HorizontalAlignment="Left" Height="23" Margin="10,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="149,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="23" Width="109" Text="Рост, вес"/>
+        <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="149,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="23" Width="109" Text="Рост;вес"/>
         <TextBox x:Name="yearOfDraft" HorizontalAlignment="Left" Height="23" Margin="10,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBlock x:Name="textBlock4" HorizontalAlignment="Left" Margin="149,122,0,0" TextWrapping="Wrap" Text="Год драфта" VerticalAlignment="Top" Height="23" Width="109"/>
         <TextBox x:Name="ptsRbsAst" HorizontalAlignment="Left" Height="23" Margin="10,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBlock x:Name="textBlock5" HorizontalAlignment="Left" Height="23" Margin="149,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123"><Run Text="Очки"/><Run Text="; "/><Run Text="подборы"/><Run Text="; "/><Run Text="пасы"/></TextBlock>
+        <TextBlock x:Name="textBlock5" HorizontalAlignment="Left" Height="23" Margin="149,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123"><Run Text="Очки"/><Run Text=";подборы"/><Run Text=";пасы"/></TextBlock>
         <TextBox x:Name="blkStlTo" HorizontalAlignment="Left" Height="24" Margin="10,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBlock x:Name="textBlock6" HorizontalAlignment="Left" Margin="149,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="123"><Run Text="Стилы"/><Run Text="; "/><Run Text="блоки; "/><Run Text="потери"/></TextBlock>
+        <TextBlock x:Name="textBlock6" HorizontalAlignment="Left" Margin="149,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="123"><Run Text="Стилы"/><Run Text=";блоки;потери"/></TextBlock>
         <TextBox x:Name="fgFt3pt" HorizontalAlignment="Left" Height="23" Margin="10,207,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBlock x:Name="textBlock7" HorizontalAlignment="Left" Margin="149,208,0,0" TextWrapping="Wrap" Text="FG; FT; 3pt (%)" VerticalAlignment="Top" Height="22" Width="123"/>
-        <Button x:Name="createNewPlayer" Content="Button" HorizontalAlignment="Left" Margin="10,239,0,0" VerticalAlignment="Top" Width="99" Height="30" Click="createNewPlayer_Click"/>
+        <TextBlock x:Name="textBlock7" HorizontalAlignment="Left" Margin="149,208,0,0" TextWrapping="Wrap" Text="FG;FT;3pt (%)" VerticalAlignment="Top" Height="22" Width="123"/>
+        <Button x:Name="createNewPlayer" Content="Button" HorizontalAlignment="Left" Margin="10,329,0,0" VerticalAlignment="Top" Width="99" Height="30" Click="createNewPlayer_Click"/>
+        <TextBox x:Name="teamName" HorizontalAlignment="Left" Height="23" Margin="10,286,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.251,-0.332"/>
+        <TextBlock x:Name="textBlock8" HorizontalAlignment="Left" Margin="149,286,0,0" TextWrapping="Wrap" Text="В какую команду" VerticalAlignment="Top" Height="23" Width="109"/>
     </Grid>
 </Window>

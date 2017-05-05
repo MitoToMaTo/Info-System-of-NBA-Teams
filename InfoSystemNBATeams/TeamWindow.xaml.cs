@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using System.IO; // Не забыть прописать!!!!
+using System.IO;
 
 
 namespace InfoSystemNBATeams
@@ -51,7 +51,6 @@ namespace InfoSystemNBATeams
                         {
                             break;
                         }
-                        playerName = playerName.Substring(2);
                         string[] orgInfo = sr.ReadLine().Split(',');
                         int num = int.Parse(orgInfo[0]);
                         string position = orgInfo[1];
@@ -104,7 +103,6 @@ namespace InfoSystemNBATeams
                         {
                             break;
                         }
-                        playerName = playerName.Substring(2);
                         string[] orgInfo = sr.ReadLine().Split(',');
                         int num = int.Parse(orgInfo[0]);
                         string position = orgInfo[1];
@@ -155,7 +153,6 @@ namespace InfoSystemNBATeams
                         {
                             break;
                         }
-                        playerName = playerName.Substring(2);
                         string[] orgInfo = sr.ReadLine().Split(',');
                         int num = int.Parse(orgInfo[0]);
                         string position = orgInfo[1];

@@ -50,7 +50,6 @@ namespace InfoSystemNBATeams
                         {
                             break;
                         }
-                        playerName = playerName.Substring(2);
                         string[] orgInfo = sr.ReadLine().Split(',');
                         int num = int.Parse(orgInfo[0]);
                         string position = orgInfo[1];
