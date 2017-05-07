@@ -18,8 +18,9 @@
         <ListBox x:Name="rosterList" HorizontalAlignment="Left" Height="282" Margin="10,10,0,0" VerticalAlignment="Top" Width="131"/>
         <ListBox x:Name="playerStats" Grid.Column="1" HorizontalAlignment="Left" Height="282" Margin="10,10,0,0" VerticalAlignment="Top" Width="346"/>
         <Button x:Name="showPlayerStats" Content="Статистика" HorizontalAlignment="Left" Height="47" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="131" Click="showPlayerStats_Click"/>
-        <Button x:Name="editPlayerStats" Content="Добавить игрока" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="112" Height="47" Click="editPlayerStats_Click"/>
-        <Button x:Name="deletePlayer" Content="Удалить игрока" Grid.Column="1" HorizontalAlignment="Left" Margin="141,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="109" Height="47" Click="deletePlayer_Click"/>
+        <Button x:Name="editPlayerStats" Content="Добавить игрока" Grid.Column="1" HorizontalAlignment="Left" Margin="10,16,0,0" Grid.Row="1" VerticalAlignment="Top" Width="100" Height="35" Click="editPlayerStats_Click" RenderTransformOrigin="0.11,-0.362"/>
+        <Button x:Name="deletePlayer" Content="Удалить игрока" Grid.Column="1" HorizontalAlignment="Left" Margin="127,16,0,0" Grid.Row="1" VerticalAlignment="Top" Width="96" Height="35" Click="deletePlayer_Click"/>
+        <Button x:Name="changePlayerStats" Content="Редактировать" Grid.Column="1" HorizontalAlignment="Left" Margin="243,16,0,0" Grid.Row="1" VerticalAlignment="Top" Width="93" Height="35" Click="changePlayerStats_Click"/>
 
     </Grid>
 </Window>

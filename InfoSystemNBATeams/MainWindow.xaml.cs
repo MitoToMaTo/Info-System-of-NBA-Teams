@@ -23,6 +23,7 @@ namespace InfoSystemNBATeams
     {
         List<Player> players = new List<Player>();
         List<Team> teams = new List<Team>();
+        public string item;
 
         public MainWindow()
         {
@@ -34,7 +35,7 @@ namespace InfoSystemNBATeams
             playerStats.Items.Clear();
             using (StreamReader sr = new StreamReader("../../Players.txt", Encoding.Default))
             {
-                string item = rosterList.SelectedItem.ToString();
+                item = rosterList.SelectedItem.ToString();
                 while (!sr.EndOfStream)
                 {
                     string teamName = sr.ReadLine();
@@ -82,14 +83,14 @@ namespace InfoSystemNBATeams
 
         private void editPlayerStats_Click(object sender, RoutedEventArgs e)
         {
-            editStats editStats = new editStats();
+            EditStats editStats = new EditStats();
             editStats.Show();
         }
 
         private void deletePlayer_Click(object sender, RoutedEventArgs e)
         {
             teams.Clear();
-            string item = rosterList.SelectedItem.ToString();
+            item = rosterList.SelectedItem.ToString();
 
             using (StreamReader sr = new StreamReader("../../Players.txt", Encoding.Default))
             {
@@ -147,6 +148,33 @@ namespace InfoSystemNBATeams
                 foreach (Team team in teams)
                 {
                     sw.WriteLine(team.TeamInfoFile());
+                }
+            }
+        }
+
+        private void changePlayerStats_Click(object sender, RoutedEventArgs e)
+        {
+            item = rosterList.SelectedItem.ToString();
+
+            ChangeStats changeStats = new ChangeStats(this);
+            changeStats.Show();
+
+            using (StreamReader sr = new StreamReader("../../Players.txt", Encoding.Default))
+            {
+                while (!sr.EndOfStream)
+                {
+                    if (sr.ReadLine() == item)
+                    {
+                        string[] orgInfo = sr.ReadLine().Split(',');
+                        changeStats.number.Text = orgInfo[0];
+                        changeStats.position.Text = orgInfo[1];
+                        changeStats.heightWeight.Text = orgInfo[2] + ";" + orgInfo[3];
+                        changeStats.yearOfDraft.Text = sr.ReadLine();
+                        string[] stats = sr.ReadLine().Split(' ');
+                        changeStats.ptsRbsAst.Text = stats[0] + ";" + stats[1] + ";" + stats[2];
+                        changeStats.blkStlTo.Text = stats[3] + ";" + stats[4] + ";" + stats[5];
+                        changeStats.fgFt3pt.Text = stats[6] + ";" + stats[7] + ";" + stats[8];
+                    }
                 }
             }
         }

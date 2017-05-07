@@ -13,28 +13,28 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.IO;
 
-// СВИСТОПЛЯСКА С МАССИВАМИ players; разобраться с ними
+// РЕАЛИЗОВАТЬ РЕДАКТИРОВАНИЕ СТАТЫ
 
 namespace InfoSystemNBATeams
 {
     /// <summary>
-    /// Логика взаимодействия для editStats.xaml
+    /// Логика взаимодействия для ChangeStats.xaml
     /// </summary>
-    public partial class EditStats : Window
+    public partial class ChangeStats : Window
     {
-
+        MainWindow wnd;
         List<Team> teams = new List<Team>();
 
-        public EditStats()
+        public ChangeStats(MainWindow m)
         {
             InitializeComponent();
+            wnd = m;
         }
 
-        private void createNewPlayer_Click(object sender, RoutedEventArgs e)
+        private void changePlayer_Click(object sender, RoutedEventArgs e)
         {
-            teams.Clear();
+            string name = wnd.item;
 
-            string nameOfPlayer = name.Text;
             int numOfPlayer = int.Parse(number.Text);
             string pos = position.Text;
             string[] mass1 = heightWeight.Text.Split(';');
@@ -54,9 +54,7 @@ namespace InfoSystemNBATeams
             double ftPercentage = double.Parse(mass4[1]);
             double threePtPercentage = double.Parse(mass4[2]);
 
-            string nameOfTeam = teamName.Text; 
-
-            Player player = new Player(nameOfPlayer, numOfPlayer, pos, playerGrowth, playerWeight, draftYear, points, rebounds, assists, steals, blocks, fgPercentage, ftPercentage, threePtPercentage, turnovers);
+            Player player = new Player(name, numOfPlayer, pos, playerGrowth, playerWeight, draftYear, points, rebounds, assists, steals, blocks, fgPercentage, ftPercentage, threePtPercentage, turnovers);
 
             using (StreamReader sr = new StreamReader("../../Players.txt", Encoding.Default))
             {
@@ -66,10 +64,6 @@ namespace InfoSystemNBATeams
 
                     players.Clear();
                     string teamName = sr.ReadLine();
-                    if (nameOfTeam == teamName)
-                    {
-                        players.Add(player);
-                    }
                     string coachName = sr.ReadLine();
                     string[] teamStats = sr.ReadLine().Split('-');
                     int wins = int.Parse(teamStats[0]);
@@ -78,6 +72,14 @@ namespace InfoSystemNBATeams
                     while (true)
                     {
                         string playerName = sr.ReadLine();
+                        if(playerName == name)
+                        {
+                            sr.ReadLine();
+                            sr.ReadLine();
+                            sr.ReadLine();
+                            players.Add(player);
+                            playerName = sr.ReadLine();
+                        }
                         if (playerName == "")
                         {
                             break;
