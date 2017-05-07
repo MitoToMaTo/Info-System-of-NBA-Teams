@@ -23,6 +23,7 @@ namespace InfoSystemNBATeams
     {
         List<Player> players = new List<Player>();
         List<Team> teams = new List<Team>();
+        public string item;
 
         public TeamWindow()
         {
@@ -86,7 +87,7 @@ namespace InfoSystemNBATeams
             teamRoster.Items.Clear();
             using (StreamReader sr = new StreamReader("../../Players.txt", Encoding.Default))
             {
-                string item = teamList.SelectedItem.ToString();
+                item = teamList.SelectedItem.ToString();
                 while (!sr.EndOfStream)
                 {
                     players.Clear();
@@ -136,7 +137,7 @@ namespace InfoSystemNBATeams
         {
             using (StreamReader sr = new StreamReader("../../Players.txt", Encoding.Default))
             {
-                string item = teamList.SelectedItem.ToString();
+                item = teamList.SelectedItem.ToString();
                 while (!sr.EndOfStream)
                 {
                     players.Clear();
@@ -184,6 +185,29 @@ namespace InfoSystemNBATeams
                         {
                             mainwindow.rosterList.Items.Add(player.Name);
                         }
+                    }
+                }
+            }
+        }
+
+        private void changeTeamInfo_Click(object sender, RoutedEventArgs e)
+        {
+            item = teamList.SelectedItem.ToString();
+
+            ChangeTeamInfo changeTeamInfo = new ChangeTeamInfo(this);
+            changeTeamInfo.Show();
+
+            using (StreamReader sr = new StreamReader("../../Players.txt"))
+            {
+                while(!sr.EndOfStream)
+                {
+                    if(item == sr.ReadLine())
+                    {
+                        changeTeamInfo.teamName.Text = item;
+                        changeTeamInfo.coachName.Text = sr.ReadLine();
+                        string[] mass = sr.ReadLine().Split('-');
+                        changeTeamInfo.numWins.Text = mass[0];
+                        changeTeamInfo.numLoses.Text = mass[1];
                     }
                 }
             }

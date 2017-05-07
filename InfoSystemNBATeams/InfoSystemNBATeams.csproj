@@ -58,6 +58,9 @@
     <Compile Include="ChangeStats.xaml.cs">
       <DependentUpon>ChangeStats.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ChangeTeamInfo.xaml.cs">
+      <DependentUpon>ChangeTeamInfo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ConferenceWindow.xaml.cs">
       <DependentUpon>ConferenceWindow.xaml</DependentUpon>
     </Compile>
@@ -72,6 +75,10 @@
       <DependentUpon>TeamWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="ChangeStats.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChangeTeamInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
