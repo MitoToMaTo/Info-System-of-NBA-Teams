@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InfoSystemNBATeams
 {
-    class Player
+    public class Player
     {
         private string _name;
         public string Name
@@ -139,7 +139,7 @@ namespace InfoSystemNBATeams
 
         public string PlayerInfoFile()
         {
-            return string.Format("{0}\n{1},{2},{3},{4}\n{5}\n{6} {7} {8} {9} {10} {11} {12} {13} {14}\n", Name, NumberOfPlayer, Position, Growth, Weight, YearOfDraft, PPG, RPG, APG, SPG, BPG, TPG, FGPercentage, FTPercentage, ThreeptPercentage);
+            return string.Format("{0}\n{1},{2},{3},{4}\n{5}\n{6} {7} {8} {9} {10} {11} {12} {13} {14}", Name, NumberOfPlayer, Position, Growth, Weight, YearOfDraft, PPG, RPG, APG, SPG, BPG, TPG, FGPercentage, FTPercentage, ThreeptPercentage);
         }
     }
 }

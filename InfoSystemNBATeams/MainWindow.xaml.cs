@@ -21,143 +21,65 @@ namespace InfoSystemNBATeams
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<Player> players = new List<Player>();
-        List<Team> teams = new List<Team>();
         public string item;
+        TeamWindow wnd;
+        public List<Team> prevTeams;
 
-        public MainWindow()
+        public MainWindow(TeamWindow w)
         {
             InitializeComponent();
+            wnd = w;
+            prevTeams = wnd.teams;
         }
 
         private void showPlayerStats_Click(object sender, RoutedEventArgs e)
         {
             playerStats.Items.Clear();
-            using (StreamReader sr = new StreamReader("../../Players.txt", Encoding.Default))
+            item = rosterList.SelectedItem.ToString();
+            foreach (Team team in wnd.teams)
             {
-                item = rosterList.SelectedItem.ToString();
-                while (!sr.EndOfStream)
+                foreach (Player player in team.Players)
                 {
-                    string teamName = sr.ReadLine();
-                    string coachName = sr.ReadLine();
-                    string[] teamStats = sr.ReadLine().Split('-');
-                    int wins = int.Parse(teamStats[0]);
-                    int loses = int.Parse(teamStats[1]);
-                    sr.ReadLine();
-                    while (true)
+                    if(item == player.Name)
                     {
-                        string playerName = sr.ReadLine();
-                        if (playerName == "")
-                        {
-                            break;
-                        }
-                        string[] orgInfo = sr.ReadLine().Split(',');
-                        int num = int.Parse(orgInfo[0]);
-                        string position = orgInfo[1];
-                        int growth = int.Parse(orgInfo[2]);
-                        int weight = int.Parse(orgInfo[3]);
-                        int yearOfDraft = int.Parse(sr.ReadLine());
-                        string[] stats = sr.ReadLine().Split(' ');
-                        double pts = double.Parse(stats[0]);
-                        double rbs = double.Parse(stats[1]);
-                        double ast = double.Parse(stats[2]);
-                        double stl = double.Parse(stats[3]);
-                        double blk = double.Parse(stats[4]);
-                        double to = double.Parse(stats[5]);
-                        double fg = double.Parse(stats[6]);
-                        double ft = double.Parse(stats[7]);
-                        double tp = double.Parse(stats[8]);
-
-                        Player player = new Player(playerName, num, position, growth, weight, yearOfDraft, pts, rbs, ast, stl, blk, fg, ft, tp, to);
-                        if (item.ToString() == playerName)
-                        {
-                            playerStats.Items.Add(player.PlayerInfo());
-                        }
-                        if (sr.EndOfStream)
-                            break;
+                        playerStats.Items.Add(player.PlayerInfo());
                     }
-                    Team team = new Team(teamName, coachName, wins, loses, players);
                 }
             }
         }
 
         private void editPlayerStats_Click(object sender, RoutedEventArgs e)
         {
-            EditStats editStats = new EditStats();
+            EditStats editStats = new EditStats(this);
+            editStats.teamName.Text = wnd.item;
             editStats.Show();
         }
 
         private void deletePlayer_Click(object sender, RoutedEventArgs e)
         {
-            teams.Clear();
             item = rosterList.SelectedItem.ToString();
-
-            using (StreamReader sr = new StreamReader("../../Players.txt", Encoding.Default))
-            {
-                while (!sr.EndOfStream)
-                {
-                    List<Player> newPlayers = new List<Player>();
-                    newPlayers.Clear();
-
-                    string teamName = sr.ReadLine();
-                    string coachName = sr.ReadLine();
-                    string[] teamStats = sr.ReadLine().Split('-');
-                    int wins = int.Parse(teamStats[0]);
-                    int loses = int.Parse(teamStats[1]);
-                    sr.ReadLine();
-                    while (true)
-                    {
-                        string playerName = sr.ReadLine();
-                        if (playerName == item)
-                        {
-                            sr.ReadLine();
-                            sr.ReadLine();
-                            sr.ReadLine();
-                            playerName = sr.ReadLine();
-                        }
-                        if (playerName == "")
-                        {
-                            break;
-                        }
-                        string[] orgInfo = sr.ReadLine().Split(',');
-                        int num = int.Parse(orgInfo[0]);
-                        string position = orgInfo[1];
-                        int growth = int.Parse(orgInfo[2]);
-                        int weight = int.Parse(orgInfo[3]);
-                        int yearOfDraft = int.Parse(sr.ReadLine());
-                        string[] stats = sr.ReadLine().Split(' ');
-                        double pts = double.Parse(stats[0]);
-                        double rbs = double.Parse(stats[1]);
-                        double ast = double.Parse(stats[2]);
-                        double stl = double.Parse(stats[3]);
-                        double blk = double.Parse(stats[4]);
-                        double to = double.Parse(stats[5]);
-                        double fg = double.Parse(stats[6]);
-                        double ft = double.Parse(stats[7]);
-                        double tp = double.Parse(stats[8]);
-
-                        newPlayers.Add(new Player(playerName, num, position, growth, weight, yearOfDraft, pts, rbs, ast, stl, blk, fg, ft, tp, to));
-                        if (sr.EndOfStream)
-                            break;
-                    }
-                    teams.Add(new Team(teamName, coachName, wins, loses, newPlayers));
-                }
-            }
             using (StreamWriter sw = new StreamWriter("../../Players.txt"))
             {
-                foreach (Team team in teams)
+                foreach (Team team in wnd.teams)
                 {
-                    sw.WriteLine(team.TeamInfoFile());
+                    sw.WriteLine(team.ShortTeamInfoFile());
+                    foreach (Player player in team.Players)
+                    {
+                        if (item != player.Name)
+                        {
+                            sw.WriteLine(player.PlayerInfoFile());
+                        }
+                    }
+                    sw.WriteLine();
                 }
             }
         }
 
         private void changePlayerStats_Click(object sender, RoutedEventArgs e)
         {
-            item = rosterList.SelectedItem.ToString();
-
             ChangeStats changeStats = new ChangeStats(this);
             changeStats.Show();
+            item = rosterList.SelectedItem.ToString();
 
             using (StreamReader sr = new StreamReader("../../Players.txt", Encoding.Default))
             {
