@@ -32,19 +32,49 @@ namespace InfoSystemNBATeams
             prevTeams = wnd.teams;
         }
 
+        public void updateTeamRoster()
+        {
+            string newItem = wnd.teamList.SelectedItem.ToString();
+            foreach (Team t in wnd.teams)
+            {
+                if (newItem == t.Name)
+                {
+                    foreach (Player player in t.Players)
+                    {
+                        rosterList.Items.Add(player.Name);
+                    }
+                }
+            }
+        }
+
         private void showPlayerStats_Click(object sender, RoutedEventArgs e)
         {
             playerStats.Items.Clear();
-            item = rosterList.SelectedItem.ToString();
-            foreach (Team team in wnd.teams)
+            if (rosterList.SelectedItem == null)
             {
-                foreach (Player player in team.Players)
+                MessageBox.Show(" Выберите игрока, для которого будет показана информация. ");
+                return;
+            }
+            else
+            {
+                item = rosterList.SelectedItem.ToString();
+            }
+            try
+            {
+                foreach (Team team in wnd.teams)
                 {
-                    if(item == player.Name)
+                    foreach (Player player in team.Players)
                     {
-                        playerStats.Items.Add(player.PlayerInfo());
+                        if (item == player.Name)
+                        {
+                            playerStats.Items.Add(player.PlayerInfo());
+                        }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -57,47 +87,66 @@ namespace InfoSystemNBATeams
 
         private void deletePlayer_Click(object sender, RoutedEventArgs e)
         {
-            item = rosterList.SelectedItem.ToString();
-            using (StreamWriter sw = new StreamWriter("../../Players.txt"))
+            if (rosterList.SelectedItem == null)
             {
-                foreach (Team team in wnd.teams)
-                {
-                    sw.WriteLine(team.ShortTeamInfoFile());
-                    foreach (Player player in team.Players)
-                    {
-                        if (item != player.Name)
-                        {
-                            sw.WriteLine(player.PlayerInfoFile());
-                        }
-                    }
-                    sw.WriteLine();
-                }
+                MessageBox.Show(" Выберите игрока, которого хотите удалить. ");
+                return;
             }
+            else
+            {
+                item = rosterList.SelectedItem.ToString();
+            }
+
+            DeletePlayer deletePlayer = new DeletePlayer(this);
+            deletePlayer.Show();
         }
 
         private void changePlayerStats_Click(object sender, RoutedEventArgs e)
         {
+            if (rosterList.SelectedItem == null)
+            {
+                MessageBox.Show(" Выберите игрока, информацию которого хотите поменять. ");
+                return;
+            }
+            else
+            {
+                item = rosterList.SelectedItem.ToString();
+            }
+
             ChangeStats changeStats = new ChangeStats(this);
             changeStats.Show();
-            item = rosterList.SelectedItem.ToString();
 
-            using (StreamReader sr = new StreamReader("../../Players.txt", Encoding.Default))
+            if (File.Exists("../../Players.txt"))
             {
-                while (!sr.EndOfStream)
+                try
                 {
-                    if (sr.ReadLine() == item)
+                    using (StreamReader sr = new StreamReader("../../Players.txt", Encoding.Default))
                     {
-                        string[] orgInfo = sr.ReadLine().Split(',');
-                        changeStats.number.Text = orgInfo[0];
-                        changeStats.position.Text = orgInfo[1];
-                        changeStats.heightWeight.Text = orgInfo[2] + ";" + orgInfo[3];
-                        changeStats.yearOfDraft.Text = sr.ReadLine();
-                        string[] stats = sr.ReadLine().Split(' ');
-                        changeStats.ptsRbsAst.Text = stats[0] + ";" + stats[1] + ";" + stats[2];
-                        changeStats.blkStlTo.Text = stats[3] + ";" + stats[4] + ";" + stats[5];
-                        changeStats.fgFt3pt.Text = stats[6] + ";" + stats[7] + ";" + stats[8];
+                        while (!sr.EndOfStream)
+                        {
+                            if (sr.ReadLine() == item)
+                            {
+                                string[] orgInfo = sr.ReadLine().Split(',');
+                                changeStats.number.Text = orgInfo[0];
+                                changeStats.position.Text = orgInfo[1];
+                                changeStats.heightWeight.Text = orgInfo[2] + ";" + orgInfo[3];
+                                changeStats.yearOfDraft.Text = sr.ReadLine();
+                                string[] stats = sr.ReadLine().Split(' ');
+                                changeStats.ptsRbsAst.Text = stats[0] + ";" + stats[1] + ";" + stats[2];
+                                changeStats.blkStlTo.Text = stats[3] + ";" + stats[4] + ";" + stats[5];
+                                changeStats.fgFt3pt.Text = stats[6] + ";" + stats[7] + ";" + stats[8];
+                            }
+                        }
                     }
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show(" Указан несуществующий путь. ");
             }
         }
     }

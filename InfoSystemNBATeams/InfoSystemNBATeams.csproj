@@ -61,6 +61,9 @@
     <Compile Include="ChangeTeamInfo.xaml.cs">
       <DependentUpon>ChangeTeamInfo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DeletePlayer.xaml.cs">
+      <DependentUpon>DeletePlayer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EditStats.xaml.cs">
       <DependentUpon>EditStats.xaml</DependentUpon>
     </Compile>
@@ -73,6 +76,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ChangeTeamInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DeletePlayer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
