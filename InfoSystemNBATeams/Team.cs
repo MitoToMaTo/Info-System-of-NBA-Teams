@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace InfoSystemNBATeams
@@ -12,28 +13,68 @@ namespace InfoSystemNBATeams
         public string Name
         {
             get { return _name; }
-            set { _name = value; }
+            set
+            {
+                if (String.IsNullOrWhiteSpace(value))
+                {
+                    throw new Exception("Название команды не должно быть пустым. ");
+                }
+                else
+                {
+                    _name = value;
+                }
+            }
         }
 
         private string _nameOfCoach;
         public string NameOfCoach
         {
             get { return _nameOfCoach; }
-            set { _nameOfCoach = value; }
+            set
+            {
+                if ((String.IsNullOrWhiteSpace(value)) || (Regex.IsMatch(value, @"[0,0-9,9]")))
+                {
+                    throw new Exception("Имя тренера должно быть непустым и должно не содержать числа. ");
+                }
+                else
+                {
+                    _nameOfCoach = value;
+                }
+            }
         }
 
         private int _wins;
         public int Wins
         {
             get { return _wins; }
-            set { _wins = value; }
+            set
+            {
+                if (!((value > 0) && (value < 82)))
+                {
+                    throw new Exception("Кол-во побед лежит в промежутке от 0 до 82 и в сумме с кол-вом поражений дает 82. ");
+                }
+                else
+                {
+                    _wins = value;
+                }
+            }
         }
 
         private int _loses;
         public int Loses
         {
             get { return _loses; }
-            set { _loses = value; }
+            set
+            {
+                if (!((value > 0) && (value < 82) && (value == 82 - Wins)))
+                {
+                    throw new Exception("Кол-во поражений лежит в промежутке от 0 до 82 и в сумме с кол-вом побед дает 82. ");
+                }
+                else
+                {
+                    _loses = value;
+                }
+            }
         }
 
         private List<Player> _players; 
