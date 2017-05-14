@@ -33,41 +33,52 @@ namespace InfoSystemNBATeams
 
             if (File.Exists("../../Players.txt"))
             {
-                try
+                if (File.Exists("../../Players.xml"))
                 {
-                    using (StreamWriter sw = new StreamWriter("../../Players.txt"))
+                    try
                     {
+                        using (StreamWriter sw = new StreamWriter("../../Players.txt"))
+                        {
+                            foreach (Team team in wnd.prevTeams)
+                            {
+                                sw.WriteLine(team.ShortTeamInfoFile());
+                                foreach (Player player in team.Players)
+                                {
+                                    if (item != player.Name)
+                                    {
+                                        sw.WriteLine(player.PlayerInfoFile());
+                                    }
+                                }
+                                sw.WriteLine();
+                            }
+                        }
                         foreach (Team team in wnd.prevTeams)
                         {
-                            sw.WriteLine(team.ShortTeamInfoFile());
                             foreach (Player player in team.Players)
                             {
-                                if (item != player.Name)
+                                if (item == player.Name)
                                 {
-                                    sw.WriteLine(player.PlayerInfoFile());
+                                    team.Players.Remove(player);
+                                    break;
                                 }
                             }
-                            sw.WriteLine();
                         }
-                    }
-                    foreach (Team team in wnd.prevTeams)
-                    {
-                        foreach (Player player in team.Players)
+                        using (FileStream fs = new FileStream("../../Players.xml", FileMode.Open))
                         {
-                            if (item == player.Name)
-                            {
-                                team.Players.Remove(player);
-                                break;
-                            }
+                            wnd.newFormatter.Serialize(fs, wnd.prevTeams);
                         }
+                        Close();
+                        wnd.rosterList.Items.Clear();
+                        wnd.updateTeamRoster();
                     }
-                    Close();
-                    wnd.rosterList.Items.Clear();
-                    wnd.updateTeamRoster();
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show(" Указан несуществующий путь. ");
                 }
             }
             else

@@ -81,6 +81,18 @@ namespace InfoSystemNBATeams
                             sw.WriteLine();
                         }
                     }
+                }
+                else
+                {
+                    MessageBox.Show(" Указан несуществующий путь. ");
+                }
+
+                if (File.Exists("../../Players.xml"))
+                {
+                    using (FileStream fs = new FileStream("../../Players.xml", FileMode.Open))
+                    {
+                        wnd.newFormatter.Serialize(fs, wnd.prevTeams);
+                    }
                     Close();
                     wnd.rosterList.Items.Clear();
                     wnd.updateTeamRoster();

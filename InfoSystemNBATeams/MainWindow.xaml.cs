@@ -12,7 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.IO; // Не забыть прописать!!!!
+using System.IO;
+using System.Xml.Serialization;
 
 namespace InfoSystemNBATeams
 {
@@ -24,12 +25,14 @@ namespace InfoSystemNBATeams
         public string item;
         TeamWindow wnd;
         public List<Team> prevTeams;
+        public XmlSerializer newFormatter;
 
         public MainWindow(TeamWindow w)
         {
             InitializeComponent();
             wnd = w;
             prevTeams = wnd.teams;
+            newFormatter = wnd.formatter;
         }
 
         public void updateTeamRoster()
@@ -116,37 +119,28 @@ namespace InfoSystemNBATeams
             ChangeStats changeStats = new ChangeStats(this);
             changeStats.Show();
 
-            if (File.Exists("../../Players.txt"))
+            try
             {
-                try
+                foreach (Team team in wnd.teams)
                 {
-                    using (StreamReader sr = new StreamReader("../../Players.txt", Encoding.Default))
+                    foreach (Player player in team.Players)
                     {
-                        while (!sr.EndOfStream)
+                        if(item == player.Name)
                         {
-                            if (sr.ReadLine() == item)
-                            {
-                                string[] orgInfo = sr.ReadLine().Split(',');
-                                changeStats.number.Text = orgInfo[0];
-                                changeStats.position.Text = orgInfo[1];
-                                changeStats.heightWeight.Text = orgInfo[2] + ";" + orgInfo[3];
-                                changeStats.yearOfDraft.Text = sr.ReadLine();
-                                string[] stats = sr.ReadLine().Split(' ');
-                                changeStats.ptsRbsAst.Text = stats[0] + ";" + stats[1] + ";" + stats[2];
-                                changeStats.blkStlTo.Text = stats[3] + ";" + stats[4] + ";" + stats[5];
-                                changeStats.fgFt3pt.Text = stats[6] + ";" + stats[7] + ";" + stats[8];
-                            }
+                            changeStats.number.Text = player.NumberOfPlayer.ToString();
+                            changeStats.position.Text = player.Position;
+                            changeStats.heightWeight.Text = player.Growth + ";" + player.Weight;
+                            changeStats.yearOfDraft.Text = player.YearOfDraft.ToString();
+                            changeStats.ptsRbsAst.Text = player.PPG + ";" + player.RPG + ";" + player.APG;
+                            changeStats.blkStlTo.Text = player.BPG + ";" + player.SPG + ";" + player.TPG;
+                            changeStats.fgFt3pt.Text = player.FGPercentage + ";" + player.FTPercentage + ";" + player.ThreeptPercentage;
                         }
                     }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show(" Указан несуществующий путь. ");
+                MessageBox.Show(ex.Message);
             }
         }
     }

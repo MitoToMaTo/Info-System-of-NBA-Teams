@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace InfoSystemNBATeams
 {
+    [Serializable]
     public class Player
     {
         private string _name;
@@ -260,6 +261,9 @@ namespace InfoSystemNBATeams
                 }
             }
         }
+        
+        public Player()
+        { }
 
         public Player(string name, int numberOfPlayer, string position, int growth, int weight, int yearOfDraft, double ppg, double rpg, double apg, double spg, double bpg, double fgPercentage, double ftPercentage, double threeptPercentage, double tpg)
         {

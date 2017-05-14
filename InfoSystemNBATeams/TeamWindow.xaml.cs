@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.IO;
+using System.Xml.Serialization;
 
 
 namespace InfoSystemNBATeams
@@ -23,6 +24,7 @@ namespace InfoSystemNBATeams
     {
         public List<Team> teams = new List<Team>();
         public string item;
+        public XmlSerializer formatter = new XmlSerializer(typeof(List<Team>));
 
         public TeamWindow()
         {
@@ -36,87 +38,106 @@ namespace InfoSystemNBATeams
 
             if (File.Exists("../../Players.txt"))
             {
-                try
+                if (File.Exists("../../Players.xml"))
                 {
-                    using (StreamReader sr = new StreamReader("../../Players.txt", Encoding.Default))
+                    try
                     {
-                        while (!sr.EndOfStream)
+                        using (StreamReader sr = new StreamReader("../../Players.txt", Encoding.Default))
                         {
-                            List<Player> players = new List<Player>();
-
-                            string teamName = sr.ReadLine();
-                            string coachName = sr.ReadLine();
-                            string[] teamStats = sr.ReadLine().Split('-');
-                            int wins = int.Parse(teamStats[0]);
-                            int loses = int.Parse(teamStats[1]);
-                            sr.ReadLine();
-                            while (true)
+                            while (!sr.EndOfStream)
                             {
-                                string playerName = sr.ReadLine();
-                                if (playerName == "")
-                                {
-                                    break;
-                                }
-                                string[] orgInfo = sr.ReadLine().Split(',');
-                                int num = int.Parse(orgInfo[0]);
-                                string position = orgInfo[1];
-                                int growth = int.Parse(orgInfo[2]);
-                                int weight = int.Parse(orgInfo[3]);
-                                int yearOfDraft = int.Parse(sr.ReadLine());
-                                string[] stats = sr.ReadLine().Split(' ');
-                                double pts = double.Parse(stats[0]);
-                                double rbs = double.Parse(stats[1]);
-                                double ast = double.Parse(stats[2]);
-                                double stl = double.Parse(stats[3]);
-                                double blk = double.Parse(stats[4]);
-                                double to = double.Parse(stats[5]);
-                                double fg = double.Parse(stats[6]);
-                                double ft = double.Parse(stats[7]);
-                                double tp = double.Parse(stats[8]);
-                                Player p = new Player(playerName, num, position, growth, weight, yearOfDraft, pts, rbs, ast, stl, blk, fg, ft, tp, to);
+                                List<Player> players = new List<Player>();
 
-                                players.Add(p);
-                                if (sr.EndOfStream)
-                                    break;
+                                string teamName = sr.ReadLine();
+                                string coachName = sr.ReadLine();
+                                string[] teamStats = sr.ReadLine().Split('-');
+                                int wins = int.Parse(teamStats[0]);
+                                int loses = int.Parse(teamStats[1]);
+                                sr.ReadLine();
+                                while (true)
+                                {
+                                    string playerName = sr.ReadLine();
+                                    if (playerName == "")
+                                    {
+                                        break;
+                                    }
+                                    string[] orgInfo = sr.ReadLine().Split(',');
+                                    int num = int.Parse(orgInfo[0]);
+                                    string position = orgInfo[1];
+                                    int growth = int.Parse(orgInfo[2]);
+                                    int weight = int.Parse(orgInfo[3]);
+                                    int yearOfDraft = int.Parse(sr.ReadLine());
+                                    string[] stats = sr.ReadLine().Split(' ');
+                                    double pts = double.Parse(stats[0]);
+                                    double rbs = double.Parse(stats[1]);
+                                    double ast = double.Parse(stats[2]);
+                                    double stl = double.Parse(stats[3]);
+                                    double blk = double.Parse(stats[4]);
+                                    double to = double.Parse(stats[5]);
+                                    double fg = double.Parse(stats[6]);
+                                    double ft = double.Parse(stats[7]);
+                                    double tp = double.Parse(stats[8]);
+                                    Player p = new Player(playerName, num, position, growth, weight, yearOfDraft, pts, rbs, ast, stl, blk, fg, ft, tp, to);
+
+                                    players.Add(p);
+                                    if (sr.EndOfStream)
+                                        break;
+                                }
+                                Team t = new Team(teamName, coachName, wins, loses, players);
+                                teams.Add(t);
                             }
-                            Team t = new Team(teamName, coachName, wins, loses, players);
-                            teams.Add(t);
+                        }
+                        foreach (Team team in teams)
+                        {
+                            teamList.Items.Add(team.Name);
+                        }
+
+                        using (FileStream fs = new FileStream("../../Players.xml", FileMode.Create))
+                        {
+                            formatter.Serialize(fs, teams);
                         }
                     }
-                    foreach (Team team in teams)
+                    catch (Exception ex)
                     {
-                        teamList.Items.Add(team.Name);
+                        MessageBox.Show(ex.Message + " Проверьте корректность данных, введенных в файл. ");
                     }
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show(ex.Message + " Проверьте корректность данных, введенных в файл. ");
+                    MessageBox.Show(" Указан несуществующий путь xml файла. ");
                 }
             }
             else
             {
-                MessageBox.Show(" Указан несуществующий путь. ");
+                MessageBox.Show(" Указан несуществующий путь текстового файла. ");
             }
         }
 
         private void showTeamInfo_Click(object sender, RoutedEventArgs e)
         {
-            teamRoster.Items.Clear();
-            if (teamList.SelectedItem == null)
+            try
             {
-                MessageBox.Show(" Выберите команду, для которой будет показана информация. ");
-                return;
-            }
-            else
-            {
-                item = teamList.SelectedItem.ToString();
-            }
-            foreach (Team t in teams)
-            {
-                if (item == t.Name)
+                teamRoster.Items.Clear();
+                if (teamList.SelectedItem == null)
                 {
-                    teamRoster.Items.Add(t.TeamInfo());
+                    MessageBox.Show(" Выберите команду, для которой будет показана информация. ");
+                    return;
                 }
+                else
+                {
+                    item = teamList.SelectedItem.ToString();
+                }
+                foreach (Team t in teams)
+                {
+                    if (item == t.Name)
+                    {
+                        teamRoster.Items.Add(t.TeamInfo());
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -161,21 +182,21 @@ namespace InfoSystemNBATeams
             ChangeTeamInfo changeTeamInfo = new ChangeTeamInfo(this);
             changeTeamInfo.Show();
 
-            if (File.Exists("../../Players.txt"))
+            if (File.Exists("../../Players.xml"))
             {
                 try
                 {
-                    using (StreamReader sr = new StreamReader("../../Players.txt"))
+                    using (FileStream fs = new FileStream("../../Players.xml", FileMode.Open))
                     {
-                        while (!sr.EndOfStream)
+                        List<Team> newTeams = (List<Team>)formatter.Deserialize(fs);
+                        foreach (Team team in newTeams)
                         {
-                            if (item == sr.ReadLine())
+                            if(team.Name == item)
                             {
-                                changeTeamInfo.teamName.Text = item;
-                                changeTeamInfo.coachName.Text = sr.ReadLine();
-                                string[] mass = sr.ReadLine().Split('-');
-                                changeTeamInfo.numWins.Text = mass[0];
-                                changeTeamInfo.numLoses.Text = mass[1];
+                                changeTeamInfo.teamName.Text = team.Name;
+                                changeTeamInfo.coachName.Text = team.NameOfCoach;
+                                changeTeamInfo.numWins.Text = team.Wins.ToString();
+                                changeTeamInfo.numLoses.Text = team.Loses.ToString();
                             }
                         }
                     }

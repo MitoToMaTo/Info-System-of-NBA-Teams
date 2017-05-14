@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.IO;
+using System.Xml.Serialization;
 
 namespace InfoSystemNBATeams
 {
@@ -65,13 +66,31 @@ namespace InfoSystemNBATeams
                             sw.WriteLine();
                         }
                     }
-                    Close();
-                    twd.teamRoster.Items.Clear();
-                    twd.readTXT_Click(this, e);
                 }
                 else
                 {
                     MessageBox.Show(" Указан несуществующий путь. ");
+                }
+
+                if (File.Exists("../../Players.xml"))
+                {
+                    foreach (Team team in twd.teams)
+                    {
+                        if (name == team.Name)
+                        {
+                            team.Name = newTeamName;
+                            team.NameOfCoach = nameOfCoach;
+                            team.Wins = teamWins;
+                            team.Loses = teamLoses;
+                        }
+                    }
+                    using (FileStream fs = new FileStream("../../Players.xml", FileMode.Open))
+                    {
+                        twd.formatter.Serialize(fs, twd.teams);
+                    }
+                    Close();
+                    twd.teamRoster.Items.Clear();
+                    twd.readTXT_Click(this, e);
                 }
             }
             catch (Exception ex)

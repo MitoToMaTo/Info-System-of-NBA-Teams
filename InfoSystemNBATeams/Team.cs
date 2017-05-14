@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace InfoSystemNBATeams
 {
+    [Serializable]
     public class Team
     {
         private string _name;
@@ -83,6 +84,9 @@ namespace InfoSystemNBATeams
             get { return _players; }
             set { _players = value; }
         }
+
+        public Team()
+        { }
 
         public Team (string name, string nameOfCoach, int wins, int loses, List<Player> players)
         {

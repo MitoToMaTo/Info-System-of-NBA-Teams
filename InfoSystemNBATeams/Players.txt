@@ -1,46 +1,509 @@
-Washington Wizards
-Jake WIllbur
-42-40
+Atlanta Hawks
+Mike Budenholtzer
+38-44
 
-John Wall
+Jeff Teague
 1,PG,200,85
 2009
 21,3 10,4 9,4 2,1 2 1,8 45,4 87,8 33,8
-Bradley Beal
+Paul Millsap
 34,C,215,120
 1998
 34,4 14,5 3,4 0,9 2,5 2 61,2 34,4 10,8
-Kelly Oubre
+Dwight Howard
 23,PF,203,107
 2003
 23,3 10,4 9,4 2,1 2 1,8 45,4 87,8 38,9
 
-Cleveland Cavaliers
-Tyron Lew
-45-37
+Boston Celtics
+Bred Stevens
+25-57
 
-Lebron James
-23,SF,203,107
+Isaiah Thomas
+23,PF,203,107
 2003
-23,3 10,4 9,4 2,1 2 1,8 45,4 87,8 38,8
-Kyrie Irving
-1,PG,198,85
+23,3 10,4 9,4 2,1 2 1,8 45,4 87,8 38,9
+Avery Bradley
+23,SG,194,97
+1998
+13,3 12,4 4,4 1,1 2,1 1,6 35,4 91,8 40,0
+Kelly Olynyk
+44,PG,190,85
+2009
+20,3 9,4 9,4 2,1 2 1,8 45,4 87,8 33,8
+
+Brooklyn Nets
+Jason Kidd
+44-38
+
+Brook Lopez
+23,PF,203,107
+2003
+23,3 10,4 9,4 2,1 2 1,8 45,4 87,8 38,9
+Andrey Kirillenko
+1,PG,200,85
 2009
 21,3 10,4 9,4 2,1 2 1,8 45,4 87,8 33,8
+Jeremy Lin
+23,SG,194,97
+1998
+13,3 12,4 4,4 1,1 2,1 1,6 35,4 91,8 40,0
 
-Orlando Magic
-Frank Vogel
-18-64
+Charlotte Hornets
+Steve Clifford
+43-39
 
-Shaquille O'Neal
+Kemba Walker
+23,SG,194,97
+1998
+13,3 12,4 4,4 1,1 2,1 1,6 35,4 91,8 40,0
+Michael Kidd-Girlchrist
+27,SG,195,88
+1999
+14,3 11,4 5,4 1,1 2,1 1,6 35,4 91,8 40,0
+Jarret Jack
+23,SG,194,97
+1998
+13,3 12,4 4,4 1,1 2,6 0,6 38,4 84,2 30,0
+
+Chicago Bulls
+Tom Tibodeau
+48-34
+
+Derrick Rose
+14,PF,203,107
+2003
+23,3 10,4 9,4 2,1 2 1,8 45,4 87,8 38,9
+Dwyane Wade
+55,C,215,120
+1998
+34,4 14,5 3,4 0,9 2,5 2 61,2 34,4 10,8
+Jimmy Butler
+23,SG,194,97
+1998
+13,3 12,4 4,4 1,1 2,1 1,6 35,4 91,8 40,0
+
+Cleveland Cavaliers
+Tyron Lou
+33-49
+
+Lebron James
+23,SG,194,97
+1998
+13,3 12,4 4,4 1,1 2,1 1,6 35,4 91,8 40,0
+Kevin Love
+26,PF,202,107
+2003
+23,3 10,4 9,4 2,1 2 1,8 45,4 87,8 38,9
+Kyrie Irving
+28,PG,194,97
+1998
+13,3 12,4 4,4 1,1 2,1 1,6 35,4 91,8 40,0
+
+Dallas Mavericks
+Rick Carlyle
+49-33
+
+Dirk Nowitzki
+1,C,215,97
+1998
+13,3 12,4 4,4 1,1 2,1 1,6 35,4 91,8 40,0
+Shawn Marrion
+63,PF,203,107
+2003
+23,3 10,4 9,4 2,1 2 1,8 45,4 87,8 38,9
+Peja Stojakovich
+23,SG,194,97
+1998
+13,3 12,4 4,4 1,1 2,1 1,6 35,4 91,8 40,0
+
+Denver Nuggets
+Brian Shaw
+36-46
+
+Kennet Faried
+1,PG,200,85
+2009
+21,3 10,4 9,4 2,1 2 1,8 45,4 87,8 33,8
+Nikola Jokic
+23,PF,203,107
+2003
+23,3 10,4 9,4 2,1 2 1,8 45,4 87,8 38,9
+Emmanuel Mudiay
+24,C,215,120
+1998
+34,4 14,5 3,4 0,9 2,5 2 61,2 34,4 10,8
+
+Detroit Pistons
+Morisse Chicks
+29-53
+
+Reggie Jackson
+1,PG,194,97
+1998
+13,3 12,4 4,4 1,1 2,1 1,6 35,4 91,8 40,0
+Andre Drummond
+34,C,205,120
+1998
+34,4 14,5 3,4 0,9 2,5 2 61,2 34,4 10,8
+Greg Monroe
+23,C,194,97
+1998
+13,3 12,4 4,4 1,1 2,1 1,6 35,4 91,8 40,0
+
+Golden State Warriors
+Steve Kerr
+51-31
+
+Stephen Curry
+8,PG,194,97
+2000
+13,3 12,4 4,4 1,1 2,1 1,6 35,4 91,8 40,0
+Klay Thompson
+23,PG,203,107
+2003
+23,3 10,4 9,4 2,1 2 1,8 45,4 87,8 38,9
+Draymond Green
+23,PF,194,100
+1998
+13,3 12,4 4,4 1,1 2,1 1,6 35,4 91,8 40,0
+
+Houston Rockets
+Kevin McHale
+54-28
+
+James Harden
+23,SG,194,97
+1998
+13,3 12,4 4,4 1,1 2,1 1,6 35,4 91,8 40,0
+Patrick Beverley
+29,PG,190,100
+2013
+14,3 11,4 2,4 1,3 2,4 1,8 44,4 61,8 28,8
+Trevor Ariza
+23,SG,194,97
+1998
+13,3 12,8 5,4 1,6 1,1 1,6 35,4 91,8 40,0
+
+Indiana Pacers
+Nate McMillan
+56-26
+
+Paul George
+23,SG,194,97
+1998
+13,3 12,4 4,4 1,1 2,1 1,6 35,4 91,8 40,0
+Miles Turner
 34,C,215,120
 1998
 34,4 14,5 3,4 0,9 2,5 2 61,2 34,4 10,8
-Jason Kidd
+Monta Ellis
+23,PF,203,107
+2003
+23,3 10,4 9,4 2,1 2 1,8 45,4 87,8 38,9
+
+Los Angeles Clippers
+Doc Rivers
+57-25
+
+Chris Paul
+1,PG,200,85
+2009
+21,3 10,4 9,4 2,1 2 1,8 45,4 87,8 33,8
+Blake Griffin
+23,SG,194,97
+1998
+13,3 12,4 4,4 1,1 2,1 1,6 35,4 91,8 40,0
+Deandre Jordan
+33,PF,203,107
+2003
+23,3 10,4 9,4 2,1 2 1,8 45,4 87,8 38,9
+
+Los Angeles Lakers
+Steve Nash
+27-55
+
+Kobe Bryant
+23,SG,194,97
+1998
+13,3 12,4 4,4 1,1 2,1 1,6 35,4 91,8 40,0
+Jordan Clarkson
+44,PF,203,107
+2003
+23,3 10,4 9,4 2,1 2 1,8 45,4 87,8 38,9
+Nick Young
+29,PG,190,100
+2013
+14,3 11,4 2,4 1,3 2,4 1,8 44,4 61,8 28,8
+
+Memphis Grizzlies
+Mike Brown
+50-32
+
+Marc Gasol
+23,PF,203,107
+2003
+23,3 10,4 6,4 2,1 2 1,8 45,4 87,8 38,9
+Mike Conley
+29,PG,190,100
+2013
+14,3 11,4 2,4 1,3 2,4 1,8 44,4 61,8 28,8
+Tony Allen
+1,PG,200,85
+2009
+21,3 10,4 9,4 2,1 2 1,8 45,4 87,8 33,8
+
+Miami Heat
+Erik Spoelstra
+54-28
+
+Hassan Whiteside
+29,PG,190,100
+2013
+14,3 11,4 2,4 1,3 2,4 1,8 44,4 61,8 28,8
+Goran Dragic
+23,PF,203,107
+2003
+23,3 10,4 6,4 2,1 2 1,8 45,4 87,8 38,9
+Udonis Haslem
+30,PF,200,104
+2002
+10,3 10,4 1,4 1,3 3,4 1,8 44,4 61,8 28,8
+
+Milwaukee Bucks
+Jack Wilder
+15-67
+
+Giannis Antetokounmpo
+29,PG,190,100
+2013
+14,3 11,4 2,4 1,3 2,4 1,8 44,4 61,8 28,8
+Michael Carter-Williams
+1,PG,200,85
+2009
+21,3 10,4 9,4 2,1 2 1,8 45,4 87,8 33,8
+Tony Snell
+30,PF,200,104
+2002
+10,3 10,4 1,4 1,3 3,4 1,8 44,4 61,8 28,8
+
+Minnesota Timberwolves
+Kevin Garnett
+40-42
+
+Nikola Pekovich
+30,PF,200,104
+2002
+10,3 10,4 1,4 1,3 3,4 1,8 44,4 61,8 28,8
+Ricky Rubio
+23,PF,203,102
+2003
+23,3 10,4 9,4 2,1 2 1,8 45,4 87,8 38,9
+Georgie Dieng
+29,PG,190,100
+2013
+14,3 11,4 2,4 1,3 2,4 1,8 44,4 61,8 28,8
+
+New Orleans Pelicans
+Bob Cousey
+34-48
+
+Anthony Davis
+29,PG,190,100
+2013
+14,3 11,4 2,4 1,3 2,4 1,8 44,4 61,8 28,8
+Demarcus Cousins
+34,C,215,120
+1998
+34,4 14,5 3,4 0,9 2,5 2 61,2 34,4 10,8
+James Jones
+23,PF,203,107
+2003
+23,3 10,4 9,4 1,1 2 1,8 45,4 87,8 38,9
+
+New York Knicks
+Phil Jackson
+37-45
+
+Carmelo Anthony
 23,SF,203,107
 2003
-23,3 10,4 9,4 2,1 2 1,8 45,4 87,8 40
+23,3 10,4 9,4 1,1 2 1,8 45,4 87,8 38,9
+Kristaps Porzingis
+29,PG,190,100
+2013
+14,3 11,4 2,4 1,3 2,4 1,8 44,4 61,8 28,8
+J.R. Smith
+23,PF,203,107
+2003
+23,3 10,4 9,4 1,1 2 1,8 45,4 87,8 38,9
+
+Oklahoma City Thunder
+Scott Brooks
+59-23
+
+Russel Westbrook
+1,PG,203,107
+2003
+23,3 10,4 9,4 1,1 2 1,8 45,4 87,8 38,9
+Steven Adams
+30,PF,200,104
+2002
+10,3 10,4 1,4 1,3 3,4 1,8 44,4 61,8 28,8
+Enes Kanter
+23,PF,203,107
+2003
+23,3 10,4 9,4 2,1 2 1,8 45,4 87,8 38,9
+
+Orlando Magic
+Frank Vogel
+23-59
+
 Victor Oladipo
-1,PG,198,85
+30,PF,200,104
+2002
+10,3 10,4 1,4 1,3 3,4 1,8 44,4 61,8 28,8
+Aaron Gordon
+23,PF,203,107
+2003
+23,3 10,4 9,4 2,1 2 1,8 45,4 87,8 38,9
+Mike Bell
+1,PG,200,85
+2009
+21,3 10,4 9,4 2,1 2 1,8 45,4 87,8 33,8
+
+Philadelphia 76ers
+Brett Brown
+19-63
+
+Joel Embiid
+30,PF,200,104
+2002
+10,3 10,4 1,4 1,3 3,4 1,8 44,4 61,8 28,8
+Nerlens Noel
+23,SF,203,107
+2003
+23,3 10,4 9,4 2,1 2 1,8 45,4 87,8 38,9
+Justin Handrick
+1,PG,200,85
+2009
+21,3 10,4 9,4 2,1 2 1,8 45,4 87,8 33,8
+
+Phoenix Suns
+Jeff Hornaceck
+48-34
+
+Devin Booker
+30,PF,200,104
+2002
+10,3 10,4 1,4 1,3 3,4 1,8 44,4 61,8 28,8
+Marcus Morris
+74,C,215,120
+1998
+34,4 14,5 3,4 0,9 2,5 2 61,2 34,4 10,8
+Justin Northwill
+23,PF,203,107
+2003
+23,3 10,4 9,4 2,1 2 1,8 45,4 87,8 38,9
+
+Portland Trail Blazers
+Vinnie Del Negro
+54-28
+
+Damian Lillard
+23,PF,203,107
+2003
+23,3 10,4 9,4 2,1 2 1,8 45,4 87,8 38,9
+Lamarcus Aldridge
+30,PF,200,104
+2002
+10,3 10,4 1,4 1,3 3,4 1,8 44,4 61,8 28,8
+Darrel Dawkins
+29,PG,190,100
+2013
+14,3 11,4 2,4 1,3 2,4 1,8 44,4 61,8 28,8
+
+Sacramento Kings
+Marcus Smart
+28-54
+
+Buddy Hield
+29,PG,190,100
+2013
+14,3 11,4 2,4 1,3 2,4 1,8 44,4 61,8 28,8
+Willie Hernangomez
+34,C,215,120
+1998
+34,4 14,5 3,4 0,9 2,5 2 61,2 34,4 10,8
+Jason Williams
+30,PF,200,104
+2002
+10,3 10,4 1,4 1,3 3,4 1,8 44,4 61,8 28,8
+
+San Antonio Spurs
+Gregg Popovich
+62-20
+
+Tim Duncan
+30,PF,200,104
+2002
+10,3 10,4 1,4 1,3 3,4 1,8 44,4 61,8 28,8
+Manu Ginobili
+29,PG,190,100
+2013
+14,3 11,4 2,4 1,3 2,4 1,8 44,4 61,8 28,8
+Tony Parker
+34,C,215,120
+1998
+34,4 14,5 3,4 0,9 2,5 2 61,2 34,4 10,8
+
+Toronto Raptors
+Dwayne Casey
+48-34
+
+Demar Derozan
+34,C,215,120
+1998
+34,4 14,5 3,4 0,9 2,5 2 61,2 34,4 10,8
+Kyle Lowry
+34,C,215,120
+1998
+34,4 14,5 3,4 0,9 2,5 2 61,2 34,4 10,8
+Robin Lopes
+23,PF,203,107
+2003
+23,3 10,4 9,4 2,1 2 1,8 45,4 87,8 38,9
+
+Utah Jazz
+John Stockton
+25-57
+
+Gordon Hayward
+34,C,215,120
+1998
+34,4 14,5 3,4 0,9 2,5 2 61,2 34,4 10,8
+Rudy Gobert
+1,PG,200,85
+2009
+21,3 10,4 9,4 2,1 2 1,8 45,4 87,8 33,8
+Aaron Brooks
+23,PF,203,107
+2003
+23,3 10,4 9,4 2,1 2 1,8 45,4 87,8 38,9
+
+Washington Wizards
+Michael Malone
+44-38
+
+John Wall
+34,C,215,120
+1998
+34,4 14,5 3,4 0,9 2,5 2 61,2 34,4 10,8
+Bradley Beal
+23,PF,203,107
+2003
+23,3 10,4 9,4 2,1 2 1,8 45,4 87,8 38,9
+Kelly Oubre
+1,PG,200,85
 2009
 21,3 10,4 9,4 2,1 2 1,8 45,4 87,8 33,8
