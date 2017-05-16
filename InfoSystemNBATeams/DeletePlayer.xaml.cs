@@ -63,7 +63,7 @@ namespace InfoSystemNBATeams
                                 }
                             }
                         }
-                        using (FileStream fs = new FileStream("../../Players.xml", FileMode.Open))
+                        using (FileStream fs = new FileStream("../../Players.xml", FileMode.Create))
                         {
                             wnd.newFormatter.Serialize(fs, wnd.prevTeams);
                         }

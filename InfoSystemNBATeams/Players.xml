@@ -7,6 +7,23 @@
     <Loses>44</Loses>
     <Players>
       <Player>
+        <Name>Jeff Teague</Name>
+        <NumberOfPlayer>1</NumberOfPlayer>
+        <Position>PG</Position>
+        <Growth>200</Growth>
+        <Weight>85</Weight>
+        <YearOfDraft>2009</YearOfDraft>
+        <PPG>21.3</PPG>
+        <RPG>10.4</RPG>
+        <APG>9.4</APG>
+        <SPG>2.1</SPG>
+        <BPG>2</BPG>
+        <FGPercentage>45.4</FGPercentage>
+        <FTPercentage>87.8</FTPercentage>
+        <ThreeptPercentage>33.8</ThreeptPercentage>
+        <TPG>1.8</TPG>
+      </Player>
+      <Player>
         <Name>Paul Millsap</Name>
         <NumberOfPlayer>34</NumberOfPlayer>
         <Position>C</Position>
@@ -25,7 +42,7 @@
       </Player>
       <Player>
         <Name>Dwight Howard</Name>
-        <NumberOfPlayer>23</NumberOfPlayer>
+        <NumberOfPlayer>5</NumberOfPlayer>
         <Position>PF</Position>
         <Growth>203</Growth>
         <Weight>107</Weight>
@@ -33,8 +50,8 @@
         <PPG>23.3</PPG>
         <RPG>10.4</RPG>
         <APG>9.4</APG>
-        <SPG>2.1</SPG>
-        <BPG>2</BPG>
+        <SPG>2</SPG>
+        <BPG>2.1</BPG>
         <FGPercentage>45.4</FGPercentage>
         <FTPercentage>87.8</FTPercentage>
         <ThreeptPercentage>38.9</ThreeptPercentage>
@@ -345,20 +362,20 @@
     <Players>
       <Player>
         <Name>Dirk Nowitzki</Name>
-        <NumberOfPlayer>1</NumberOfPlayer>
+        <NumberOfPlayer>42</NumberOfPlayer>
         <Position>C</Position>
         <Growth>215</Growth>
-        <Weight>97</Weight>
-        <YearOfDraft>1998</YearOfDraft>
-        <PPG>13.3</PPG>
-        <RPG>12.4</RPG>
+        <Weight>103</Weight>
+        <YearOfDraft>1996</YearOfDraft>
+        <PPG>24.4</PPG>
+        <RPG>10.2</RPG>
         <APG>4.4</APG>
         <SPG>1.1</SPG>
-        <BPG>2.1</BPG>
-        <FGPercentage>35.4</FGPercentage>
-        <FTPercentage>91.8</FTPercentage>
-        <ThreeptPercentage>40</ThreeptPercentage>
-        <TPG>1.6</TPG>
+        <BPG>2.2</BPG>
+        <FGPercentage>55.5</FGPercentage>
+        <FTPercentage>44.4</FTPercentage>
+        <ThreeptPercentage>33.3</ThreeptPercentage>
+        <TPG>1.1</TPG>
       </Player>
       <Player>
         <Name>Shawn Marrion</Name>
@@ -1736,24 +1753,6 @@
       </Player>
       <Player>
         <Name>Kelly Oubre</Name>
-        <NumberOfPlayer>1</NumberOfPlayer>
-        <Position>PG</Position>
-        <Growth>200</Growth>
-        <Weight>85</Weight>
-        <YearOfDraft>2009</YearOfDraft>
-        <PPG>21.3</PPG>
-        <RPG>10.4</RPG>
-        <APG>9.4</APG>
-        <SPG>2.1</SPG>
-        <BPG>2</BPG>
-        <FGPercentage>45.4</FGPercentage>
-        <FTPercentage>87.8</FTPercentage>
-        <ThreeptPercentage>33.8</ThreeptPercentage>
-        <TPG>1.8</TPG>
-      </Player>
-    </Players>
-  </Team>
-</ArrayOfTeam></Name>
         <NumberOfPlayer>1</NumberOfPlayer>
         <Position>PG</Position>
         <Growth>200</Growth>

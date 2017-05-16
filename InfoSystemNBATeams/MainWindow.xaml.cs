@@ -27,6 +27,7 @@ namespace InfoSystemNBATeams
         public List<Team> prevTeams;
         public XmlSerializer newFormatter;
 
+
         public MainWindow(TeamWindow w)
         {
             InitializeComponent();
@@ -37,7 +38,8 @@ namespace InfoSystemNBATeams
 
         public void updateTeamRoster()
         {
-            string newItem = wnd.teamList.SelectedItem.ToString();
+            //string newItem = wnd.teamList.SelectedItem.ToString();
+            string newItem = wnd.item;
             foreach (Team t in wnd.teams)
             {
                 if (newItem == t.Name)
@@ -86,6 +88,7 @@ namespace InfoSystemNBATeams
             EditStats editStats = new EditStats(this);
             editStats.teamName.Text = wnd.item;
             editStats.Show();
+            wnd.teamRoster.Items.Clear();
         }
 
         private void deletePlayer_Click(object sender, RoutedEventArgs e)
@@ -102,6 +105,7 @@ namespace InfoSystemNBATeams
 
             DeletePlayer deletePlayer = new DeletePlayer(this);
             deletePlayer.Show();
+            wnd.teamRoster.Items.Clear();
         }
 
         private void changePlayerStats_Click(object sender, RoutedEventArgs e)
@@ -118,6 +122,7 @@ namespace InfoSystemNBATeams
 
             ChangeStats changeStats = new ChangeStats(this);
             changeStats.Show();
+            wnd.teamRoster.Items.Clear();
 
             try
             {
@@ -125,7 +130,7 @@ namespace InfoSystemNBATeams
                 {
                     foreach (Player player in team.Players)
                     {
-                        if(item == player.Name)
+                        if (item == player.Name)
                         {
                             changeStats.number.Text = player.NumberOfPlayer.ToString();
                             changeStats.position.Text = player.Position;

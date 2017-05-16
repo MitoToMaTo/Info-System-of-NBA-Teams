@@ -26,6 +26,7 @@ namespace InfoSystemNBATeams
         public string item;
         public XmlSerializer formatter = new XmlSerializer(typeof(List<Team>));
 
+
         public TeamWindow()
         {
             InitializeComponent();
@@ -155,11 +156,11 @@ namespace InfoSystemNBATeams
 
             foreach (Team t in teams)
             {
-                if(item == t.Name)
+                if (item == t.Name)
                 {
                     MainWindow mainWindow = new MainWindow(this);
                     mainWindow.Show();
-                    foreach(Player player in t.Players)
+                    foreach (Player player in t.Players)
                     {
                         mainWindow.rosterList.Items.Add(player.Name);
                     }
@@ -191,7 +192,7 @@ namespace InfoSystemNBATeams
                         List<Team> newTeams = (List<Team>)formatter.Deserialize(fs);
                         foreach (Team team in newTeams)
                         {
-                            if(team.Name == item)
+                            if (team.Name == item)
                             {
                                 changeTeamInfo.teamName.Text = team.Name;
                                 changeTeamInfo.coachName.Text = team.NameOfCoach;
@@ -209,6 +210,59 @@ namespace InfoSystemNBATeams
             else
             {
                 MessageBox.Show(" Указан несуществующий путь. ");
+            }
+        }
+
+        private void search_Click(object sender, RoutedEventArgs e)
+        {
+            teamRoster.Items.Clear();
+            if (teams.Count == 0)
+            {
+                MessageBox.Show(" Необходимо считать информацию из txt файла. ");
+                return;
+            }
+            try
+            {
+                bool a = false;
+                foreach (Team team in teams)
+                {
+                    if(searchBox.Text == team.Name)
+                    {
+                        teamList.SelectedItem = searchBox.Text;
+                        teamRoster.Items.Add(team.TeamInfo());
+                        teamList.ScrollIntoView(teamList.SelectedItem);
+                        a = true;
+                        break;
+                    }
+                    foreach (Player player in team.Players)
+                    {
+                        if (searchBox.Text == player.Name)
+                        {
+                            teamList.SelectedItem = team.Name;
+                            teamList.ScrollIntoView(teamList.SelectedItem);
+                            MainWindow mainWindow = new MainWindow(this);
+                            mainWindow.Show();
+                            item = team.Name;
+                            foreach (Player newPlayer in team.Players)
+                            {
+                                mainWindow.rosterList.Items.Add(newPlayer.Name);
+                            }
+                            mainWindow.rosterList.SelectedItem = player.Name;
+                            mainWindow.playerStats.Items.Add(player.PlayerInfo());
+                            a = true;
+                            break;
+                        }
+                    }
+                }
+                if (!a)
+                {
+                    MessageBox.Show(" Нет такой команды и такого игрока. ");
+                    return;
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message); 
             }
         }
     }

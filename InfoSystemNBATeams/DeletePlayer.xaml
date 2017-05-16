@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InfoSystemNBATeams"
         mc:Ignorable="d"
-        Title="Delete Player" Height="170.301" Width="300">
+        Title="Delete Player" Height="170.301" Width="300"
+        ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="100*"/>

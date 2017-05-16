@@ -61,6 +61,21 @@ namespace InfoSystemNBATeams
 
                 string nameOfTeam = teamName.Text;
 
+                bool isFound = false;
+                foreach (Team team in wnd.prevTeams)
+                {
+                    if (team.Name == nameOfTeam)
+                    {
+                        isFound = true;
+                        break; 
+                    }
+                }
+                if(!isFound)
+                {
+                    MessageBox.Show(" Команды с таким названием нет. ");
+                    return;
+                }
+
                 Player newPlayer = new Player(nameOfPlayer, numOfPlayer, pos, playerGrowth, playerWeight, draftYear, points, rebounds, assists, steals, blocks, fgPercentage, ftPercentage, threePtPercentage, turnovers);
 
                 if (File.Exists("../../Players.txt"))
