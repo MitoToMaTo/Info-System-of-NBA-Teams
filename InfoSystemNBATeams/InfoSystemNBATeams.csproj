@@ -55,51 +55,58 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ChangeStats.xaml.cs">
-      <DependentUpon>ChangeStats.xaml</DependentUpon>
+    <Compile Include="ChangeStatsPage.xaml.cs">
+      <DependentUpon>ChangeStatsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ChangeTeamInfo.xaml.cs">
-      <DependentUpon>ChangeTeamInfo.xaml</DependentUpon>
+    <Compile Include="ChangeTeamInfoPage.xaml.cs">
+      <DependentUpon>ChangeTeamInfoPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DeletePlayer.xaml.cs">
-      <DependentUpon>DeletePlayer.xaml</DependentUpon>
+    <Compile Include="CreatePlayerPage.xaml.cs">
+      <DependentUpon>CreatePlayerPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EditStats.xaml.cs">
-      <DependentUpon>EditStats.xaml</DependentUpon>
+    <Compile Include="DeletePlayerPage.xaml.cs">
+      <DependentUpon>DeletePlayerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InfoWindow.xaml.cs">
+      <DependentUpon>InfoWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages.cs" />
+    <Compile Include="RosterPage.xaml.cs">
+      <DependentUpon>RosterPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Team.cs" />
-    <Compile Include="TeamWindow.xaml.cs">
-      <DependentUpon>TeamWindow.xaml</DependentUpon>
+    <Compile Include="TeamPage.xaml.cs">
+      <DependentUpon>TeamPage.xaml</DependentUpon>
     </Compile>
-    <Page Include="ChangeStats.xaml">
+    <Page Include="ChangeStatsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ChangeTeamInfo.xaml">
+    <Page Include="ChangeTeamInfoPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="DeletePlayer.xaml">
+    <Page Include="CreatePlayerPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EditStats.xaml">
+    <Page Include="DeletePlayerPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="InfoWindow.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Page Include="TeamWindow.xaml">
+    <Page Include="RosterPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TeamPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

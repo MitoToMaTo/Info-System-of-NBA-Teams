@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,38 +12,57 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.IO;
 using System.Xml.Serialization;
 
 namespace InfoSystemNBATeams
 {
     /// <summary>
-    /// Логика взаимодействия для ChangeTeamInfo.xaml
+    /// Логика взаимодействия для ChangeTeamInfoPage.xaml
     /// </summary>
-    public partial class ChangeTeamInfo : Window
+    public partial class ChangeTeamInfoPage : Page
     {
-        TeamWindow twd;
+        string name;
+        List<Team> tteams;
+        XmlSerializer fformatter;
 
-        public ChangeTeamInfo(TeamWindow m)
+        public string Method1(string sr)
+        {
+            name = sr;
+            return name;
+        }
+
+        public List<Team> Method2(List<Team> tms)
+        {
+            tteams = tms;
+            return tteams;
+        }
+
+        public XmlSerializer Method3(XmlSerializer xmls)
+        {
+            fformatter = xmls;
+            return fformatter;
+        }
+
+        public ChangeTeamInfoPage()
         {
             InitializeComponent();
-            twd = m;
         }
 
         private void change_Click(object sender, RoutedEventArgs e)
         {
-            string name = twd.item;
             try
             {
-                if ((String.IsNullOrWhiteSpace(teamName.Text)) || (String.IsNullOrWhiteSpace(coachName.Text)) || (String.IsNullOrWhiteSpace(numWins.Text)) || (String.IsNullOrWhiteSpace(numLoses.Text)))
+                Pages.TeamPage.teamRoster.Items.Clear();
+                if ((String.IsNullOrWhiteSpace(teamName.Text)) || (Regex.IsMatch(teamName.Text, @"[А-Яа-я]")) || (String.IsNullOrWhiteSpace(coachName.Text)) || (Regex.IsMatch(coachName.Text, @"[А-Яа-я]")) || (String.IsNullOrWhiteSpace(numWins.Text)) || (String.IsNullOrWhiteSpace(numLoses.Text)))
                 {
-                    MessageBox.Show(" Все поля должны быть непустыми. ");
+                    MessageBox.Show(" Недопустимы русские буквы и пустые поля. ");
                     return;
                 }
 
-                string newTeamName = teamName.Text;
-                string nameOfCoach = coachName.Text;
+                string newTeamName = Pages.FirstUpper(teamName.Text);
+                string nameOfCoach = Pages.FirstUpper(coachName.Text);
                 int teamWins = int.Parse(numWins.Text);
                 int teamLoses = int.Parse(numLoses.Text);
 
@@ -49,7 +70,7 @@ namespace InfoSystemNBATeams
                 {
                     using (StreamWriter sw = new StreamWriter("../../Players.txt"))
                     {
-                        foreach (Team team in twd.teams)
+                        foreach (Team team in tteams)
                         {
                             if (team.Name == name)
                             {
@@ -74,7 +95,7 @@ namespace InfoSystemNBATeams
 
                 if (File.Exists("../../Players.xml"))
                 {
-                    foreach (Team team in twd.teams)
+                    foreach (Team team in tteams)
                     {
                         if (name == team.Name)
                         {
@@ -86,17 +107,23 @@ namespace InfoSystemNBATeams
                     }
                     using (FileStream fs = new FileStream("../../Players.xml", FileMode.Open))
                     {
-                        twd.formatter.Serialize(fs, twd.teams);
+                        fformatter.Serialize(fs, tteams);
                     }
-                    Close();
-                    twd.teamRoster.Items.Clear();
-                    twd.readTXT_Click(this, e);
+                    Pages.TeamPage.readTXT_Click(this, e);
+                    NavigationService.Navigate(Pages.TeamPage);
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void goBack_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(Pages.TeamPage);
+            Pages.TeamPage.readTXT_Click(this, e);
+            Pages.TeamPage.searchBox.Clear();
         }
     }
 }

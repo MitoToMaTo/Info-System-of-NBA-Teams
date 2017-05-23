@@ -421,7 +421,7 @@
     <Players>
       <Player>
         <Name>Kennet Faried</Name>
-        <NumberOfPlayer>1</NumberOfPlayer>
+        <NumberOfPlayer>44</NumberOfPlayer>
         <Position>PG</Position>
         <Growth>200</Growth>
         <Weight>85</Weight>
@@ -429,8 +429,8 @@
         <PPG>21.3</PPG>
         <RPG>10.4</RPG>
         <APG>9.4</APG>
-        <SPG>2.1</SPG>
-        <BPG>2</BPG>
+        <SPG>2</SPG>
+        <BPG>2.1</BPG>
         <FGPercentage>45.4</FGPercentage>
         <FTPercentage>87.8</FTPercentage>
         <ThreeptPercentage>33.8</ThreeptPercentage>

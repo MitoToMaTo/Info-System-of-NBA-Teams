@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,24 +11,40 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.IO;
-
-// РЕАЛИЗОВАТЬ РЕДАКТИРОВАНИЕ СТАТЫ
+using System.Xml.Serialization;
 
 namespace InfoSystemNBATeams
 {
     /// <summary>
-    /// Логика взаимодействия для ChangeStats.xaml
+    /// Логика взаимодействия для ChangeStatsPage.xaml
     /// </summary>
-    public partial class ChangeStats : Window
+    public partial class ChangeStatsPage : Page
     {
-        MainWindow wnd;
+        string item;
+        List<Team> prevTeams;
+        XmlSerializer newFormatter;
 
-        public ChangeStats(MainWindow m)
+        public string Method1(string sr)
+        {
+            item = sr;
+            return item;
+        }
+        public List<Team> Method2(List<Team> tms)
+        {
+            prevTeams = tms;
+            return prevTeams;
+        }
+        public XmlSerializer Method3(XmlSerializer xms)
+        {
+            newFormatter = xms;
+            return newFormatter;
+        }
+
+        public ChangeStatsPage()
         {
             InitializeComponent();
-            wnd = m;
         }
 
         private void changePlayer_Click(object sender, RoutedEventArgs e)
@@ -40,10 +57,10 @@ namespace InfoSystemNBATeams
                     return;
                 }
 
-                string name = wnd.item;
+                string name = item;
 
                 int numOfPlayer = int.Parse(number.Text);
-                string pos = position.Text;
+                string pos = position.Text.ToUpper();
                 string[] mass1 = heightWeight.Text.Split(';');
                 int playerGrowth = int.Parse(mass1[0]);
                 int playerWeight = int.Parse(mass1[1]);
@@ -65,7 +82,7 @@ namespace InfoSystemNBATeams
                 {
                     using (StreamWriter sw = new StreamWriter("../../Players.txt"))
                     {
-                        foreach (Team team in wnd.prevTeams)
+                        foreach (Team team in prevTeams)
                         {
                             sw.WriteLine(team.ShortTeamInfoFile());
                             foreach (Player player in team.Players)
@@ -101,12 +118,10 @@ namespace InfoSystemNBATeams
                 {
                     using (FileStream fs = new FileStream("../../Players.xml", FileMode.Open))
                     {
-                        wnd.newFormatter.Serialize(fs, wnd.prevTeams);
+                        newFormatter.Serialize(fs, prevTeams);
                     }
-                    Close();
-                    wnd.rosterList.Items.Clear();
-                    wnd.playerStats.Items.Clear();
-                    wnd.updateTeamRoster();
+                    Pages.RosterPage.playerStats.Items.Clear();
+                    NavigationService.Navigate(Pages.RosterPage);
                 }
                 else
                 {
@@ -117,6 +132,11 @@ namespace InfoSystemNBATeams
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void goBack_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(Pages.RosterPage);
         }
     }
 }

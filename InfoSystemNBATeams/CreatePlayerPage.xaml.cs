@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,38 +12,55 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.IO;
-
-// СВИСТОПЛЯСКА С МАССИВАМИ players; разобраться с ними
+using System.Xml.Serialization;
 
 namespace InfoSystemNBATeams
 {
     /// <summary>
-    /// Логика взаимодействия для editStats.xaml
+    /// Логика взаимодействия для CreatePlayerPage.xaml
     /// </summary>
-    public partial class EditStats : Window
+    public partial class CreatePlayerPage : Page
     {
-        MainWindow wnd;
-        public EditStats(MainWindow w)
+        string item;
+        List<Team> prevTeams;
+        XmlSerializer newFormatter;
+
+        public string Method1(string sr)
+        {
+            item = sr;
+            return item;
+        }
+        public List<Team> Method2(List<Team> tms)
+        {
+            prevTeams = tms;
+            return prevTeams;
+        }
+        public XmlSerializer Method3(XmlSerializer xms)
+        {
+            newFormatter = xms;
+            return newFormatter;
+        }
+
+        public CreatePlayerPage()
         {
             InitializeComponent();
-            wnd = w;
         }
 
         private void createNewPlayer_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                if ((String.IsNullOrWhiteSpace(name.Text)) || (String.IsNullOrWhiteSpace(number.Text)) || (String.IsNullOrWhiteSpace(position.Text)) || (String.IsNullOrWhiteSpace(heightWeight.Text)) || (String.IsNullOrWhiteSpace(yearOfDraft.Text)) || (String.IsNullOrWhiteSpace(ptsRbsAst.Text)) || (String.IsNullOrWhiteSpace(blkStlTo.Text)) || (String.IsNullOrWhiteSpace(fgFt3pt.Text)) || (String.IsNullOrWhiteSpace(teamName.Text)))
+                if ((String.IsNullOrWhiteSpace(name.Text)) || (Regex.IsMatch(name.Text, @"[А-Яа-я]")) || (String.IsNullOrWhiteSpace(number.Text)) || (String.IsNullOrWhiteSpace(position.Text)) || (String.IsNullOrWhiteSpace(heightWeight.Text)) || (String.IsNullOrWhiteSpace(yearOfDraft.Text)) || (String.IsNullOrWhiteSpace(ptsRbsAst.Text)) || (String.IsNullOrWhiteSpace(blkStlTo.Text)) || (String.IsNullOrWhiteSpace(fgFt3pt.Text)) || (String.IsNullOrWhiteSpace(teamName.Text)))
                 {
-                    MessageBox.Show(" Все поля должны быть непустыми. ");
+                    MessageBox.Show("Недопустимы русские буквы и пустые поля. ");
                     return;
                 }
 
-                string nameOfPlayer = name.Text;
+                string nameOfPlayer = Pages.FirstUpper(name.Text);
                 int numOfPlayer = int.Parse(number.Text);
-                string pos = position.Text;
+                string pos = position.Text.ToUpper();
                 string[] mass1 = heightWeight.Text.Split(';');
                 int playerGrowth = int.Parse(mass1[0]);
                 int playerWeight = int.Parse(mass1[1]);
@@ -59,18 +78,18 @@ namespace InfoSystemNBATeams
                 double ftPercentage = double.Parse(mass4[1]);
                 double threePtPercentage = double.Parse(mass4[2]);
 
-                string nameOfTeam = teamName.Text;
+                string nameOfTeam = Pages.FirstUpper(teamName.Text);
 
                 bool isFound = false;
-                foreach (Team team in wnd.prevTeams)
+                foreach (Team team in prevTeams)
                 {
                     if (team.Name == nameOfTeam)
                     {
                         isFound = true;
-                        break; 
+                        break;
                     }
                 }
-                if(!isFound)
+                if (!isFound)
                 {
                     MessageBox.Show(" Команды с таким названием нет. ");
                     return;
@@ -82,7 +101,7 @@ namespace InfoSystemNBATeams
                 {
                     using (StreamWriter sw = new StreamWriter("../../Players.txt"))
                     {
-                        foreach (Team team in wnd.prevTeams)
+                        foreach (Team team in prevTeams)
                         {
                             sw.WriteLine(team.ShortTeamInfoFile());
                             if (nameOfTeam == team.Name)
@@ -106,11 +125,11 @@ namespace InfoSystemNBATeams
                 {
                     using (FileStream fs = new FileStream("../../Players.xml", FileMode.Open))
                     {
-                        wnd.newFormatter.Serialize(fs, wnd.prevTeams);
+                        newFormatter.Serialize(fs, prevTeams);
                     }
-                    Close();
-                    wnd.rosterList.Items.Clear();
-                    wnd.updateTeamRoster();
+                    Pages.RosterPage.rosterList.Items.Clear();
+                    NavigationService.Navigate(Pages.RosterPage);
+                    Pages.RosterPage.updateTeamRoster();
                 }
                 else
                 {
@@ -121,6 +140,11 @@ namespace InfoSystemNBATeams
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void goBack_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(Pages.RosterPage);
         }
     }
 }

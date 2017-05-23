@@ -10,28 +10,26 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
 using System.Xml.Serialization;
 
-
 namespace InfoSystemNBATeams
 {
     /// <summary>
-    /// Логика взаимодействия для TeamWindow.xaml
+    /// Логика взаимодействия для TeamPage.xaml
     /// </summary>
-    public partial class TeamWindow : Window
+    public partial class TeamPage : Page
     {
         public List<Team> teams = new List<Team>();
         public string item;
         public XmlSerializer formatter = new XmlSerializer(typeof(List<Team>));
 
-
-        public TeamWindow()
+        public TeamPage()
         {
             InitializeComponent();
         }
-
         public void readTXT_Click(object sender, RoutedEventArgs e)
         {
             teamList.Items.Clear();
@@ -142,32 +140,6 @@ namespace InfoSystemNBATeams
             }
         }
 
-        private void showTeamRoster_Click(object sender, RoutedEventArgs e)
-        {
-            if (teamList.SelectedItem == null)
-            {
-                MessageBox.Show(" Выберите команду, для которой будет показан состав. ");
-                return;
-            }
-            else
-            {
-                item = teamList.SelectedItem.ToString();
-            }
-
-            foreach (Team t in teams)
-            {
-                if (item == t.Name)
-                {
-                    MainWindow mainWindow = new MainWindow(this);
-                    mainWindow.Show();
-                    foreach (Player player in t.Players)
-                    {
-                        mainWindow.rosterList.Items.Add(player.Name);
-                    }
-                }
-            }
-        }
-
         private void changeTeamInfo_Click(object sender, RoutedEventArgs e)
         {
             if (teamList.SelectedItem == null)
@@ -178,10 +150,13 @@ namespace InfoSystemNBATeams
             else
             {
                 item = teamList.SelectedItem.ToString();
+
+                Pages.ChangeTeamInfoPage.Method1(item);
+                Pages.ChangeTeamInfoPage.Method2(teams);
+                Pages.ChangeTeamInfoPage.Method3(formatter);
             }
 
-            ChangeTeamInfo changeTeamInfo = new ChangeTeamInfo(this);
-            changeTeamInfo.Show();
+            NavigationService.Navigate(Pages.ChangeTeamInfoPage);
 
             if (File.Exists("../../Players.xml"))
             {
@@ -194,10 +169,10 @@ namespace InfoSystemNBATeams
                         {
                             if (team.Name == item)
                             {
-                                changeTeamInfo.teamName.Text = team.Name;
-                                changeTeamInfo.coachName.Text = team.NameOfCoach;
-                                changeTeamInfo.numWins.Text = team.Wins.ToString();
-                                changeTeamInfo.numLoses.Text = team.Loses.ToString();
+                                Pages.ChangeTeamInfoPage.teamName.Text = team.Name;
+                                Pages.ChangeTeamInfoPage.coachName.Text = team.NameOfCoach;
+                                Pages.ChangeTeamInfoPage.numWins.Text = team.Wins.ToString();
+                                Pages.ChangeTeamInfoPage.numLoses.Text = team.Loses.ToString();
                             }
                         }
                     }
@@ -213,7 +188,37 @@ namespace InfoSystemNBATeams
             }
         }
 
-        private void search_Click(object sender, RoutedEventArgs e)
+        private void showTeamRoster_Click(object sender, RoutedEventArgs e)
+        {
+            Pages.RosterPage.rosterList.Items.Clear();
+            Pages.RosterPage.playerStats.Items.Clear();
+            if (teamList.SelectedItem == null)
+            {
+                MessageBox.Show(" Выберите команду, для которой будет показан состав. ");
+                return;
+            }
+            else
+            {
+                item = teamList.SelectedItem.ToString();
+                Pages.RosterPage.Method1(item);
+                Pages.RosterPage.Method2(teams);
+                Pages.RosterPage.Method3(formatter);
+            }
+
+            foreach (Team t in teams)
+            {
+                if (item == t.Name)
+                {
+                    NavigationService.Navigate(Pages.RosterPage);
+                    foreach (Player player in t.Players)
+                    {
+                        Pages.RosterPage.rosterList.Items.Add(player.Name);
+                    }
+                }
+            }
+        }
+
+        public void search_Click(object sender, RoutedEventArgs e)
         {
             teamRoster.Items.Clear();
             if (teams.Count == 0)
@@ -223,10 +228,14 @@ namespace InfoSystemNBATeams
             }
             try
             {
+                searchBox.Text = Pages.FirstUpper(searchBox.Text);
+
+                Pages.RosterPage.rosterList.Items.Clear();
+                Pages.RosterPage.playerStats.Items.Clear();
                 bool a = false;
                 foreach (Team team in teams)
                 {
-                    if(searchBox.Text == team.Name)
+                    if (searchBox.Text == team.Name)
                     {
                         teamList.SelectedItem = searchBox.Text;
                         teamRoster.Items.Add(team.TeamInfo());
@@ -240,15 +249,14 @@ namespace InfoSystemNBATeams
                         {
                             teamList.SelectedItem = team.Name;
                             teamList.ScrollIntoView(teamList.SelectedItem);
-                            MainWindow mainWindow = new MainWindow(this);
-                            mainWindow.Show();
+                            NavigationService.Navigate(Pages.RosterPage);
                             item = team.Name;
                             foreach (Player newPlayer in team.Players)
                             {
-                                mainWindow.rosterList.Items.Add(newPlayer.Name);
+                                Pages.RosterPage.rosterList.Items.Add(newPlayer.Name);
                             }
-                            mainWindow.rosterList.SelectedItem = player.Name;
-                            mainWindow.playerStats.Items.Add(player.PlayerInfo());
+                            Pages.RosterPage.rosterList.SelectedItem = player.Name;
+                            Pages.RosterPage.playerStats.Items.Add(player.PlayerInfo());
                             a = true;
                             break;
                         }
@@ -260,9 +268,9 @@ namespace InfoSystemNBATeams
                     return;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.Message); 
+                MessageBox.Show(ex.Message);
             }
         }
     }

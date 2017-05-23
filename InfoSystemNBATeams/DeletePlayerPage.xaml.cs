@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,27 +11,44 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.IO;
+using System.Xml.Serialization;
 
 namespace InfoSystemNBATeams
 {
     /// <summary>
-    /// Логика взаимодействия для DeletePlayer.xaml
+    /// Логика взаимодействия для DeletePlayerPage.xaml
     /// </summary>
-    public partial class DeletePlayer : Window
+    public partial class DeletePlayerPage : Page
     {
-        MainWindow wnd;
-        public DeletePlayer(MainWindow w)
+        public DeletePlayerPage()
         {
             InitializeComponent();
-            wnd = w;
+        }
+
+        string item;
+        List<Team> prevTeams;
+        XmlSerializer newFormatter;
+
+        public string Method1(string sr)
+        {
+            item = sr;
+            return item;
+        }
+        public List<Team> Method2(List<Team> tms)
+        {
+            prevTeams = tms;
+            return prevTeams;
+        }
+        public XmlSerializer Method3(XmlSerializer xms)
+        {
+            newFormatter = xms;
+            return newFormatter;
         }
 
         private void yesButton_Click(object sender, RoutedEventArgs e)
         {
-            string item = wnd.rosterList.SelectedItem.ToString();
-
             if (File.Exists("../../Players.txt"))
             {
                 if (File.Exists("../../Players.xml"))
@@ -39,7 +57,7 @@ namespace InfoSystemNBATeams
                     {
                         using (StreamWriter sw = new StreamWriter("../../Players.txt"))
                         {
-                            foreach (Team team in wnd.prevTeams)
+                            foreach (Team team in prevTeams)
                             {
                                 sw.WriteLine(team.ShortTeamInfoFile());
                                 foreach (Player player in team.Players)
@@ -52,7 +70,7 @@ namespace InfoSystemNBATeams
                                 sw.WriteLine();
                             }
                         }
-                        foreach (Team team in wnd.prevTeams)
+                        foreach (Team team in prevTeams)
                         {
                             foreach (Player player in team.Players)
                             {
@@ -65,11 +83,11 @@ namespace InfoSystemNBATeams
                         }
                         using (FileStream fs = new FileStream("../../Players.xml", FileMode.Create))
                         {
-                            wnd.newFormatter.Serialize(fs, wnd.prevTeams);
+                            newFormatter.Serialize(fs, prevTeams);
                         }
-                        Close();
-                        wnd.rosterList.Items.Clear();
-                        wnd.updateTeamRoster();
+                        Pages.RosterPage.rosterList.Items.Clear();
+                        NavigationService.Navigate(Pages.RosterPage);
+                        Pages.RosterPage.updateTeamRoster();
                     }
                     catch (Exception ex)
                     {
@@ -89,7 +107,7 @@ namespace InfoSystemNBATeams
 
         private void noButton_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            NavigationService.Navigate(Pages.RosterPage);
         }
     }
 }

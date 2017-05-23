@@ -12,37 +12,48 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.IO;
 using System.Xml.Serialization;
 
 namespace InfoSystemNBATeams
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для RosterPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class RosterPage : Page
     {
         public string item;
-        TeamWindow wnd;
         public List<Team> prevTeams;
         public XmlSerializer newFormatter;
+        public string prevItem;
 
+        public string Method1(string sr)
+        {
+            prevItem = sr;
+            return prevItem;
+        }
 
-        public MainWindow(TeamWindow w)
+        public List<Team> Method2(List<Team> tms)
+        {
+            prevTeams = tms;
+            return prevTeams;
+        }
+
+        public XmlSerializer Method3(XmlSerializer xmls)
+        {
+            newFormatter = xmls;
+            return newFormatter;
+        }
+
+        public RosterPage()
         {
             InitializeComponent();
-            wnd = w;
-            prevTeams = wnd.teams;
-            newFormatter = wnd.formatter;
         }
 
         public void updateTeamRoster()
         {
-            //string newItem = wnd.teamList.SelectedItem.ToString();
-            string newItem = wnd.item;
-            foreach (Team t in wnd.teams)
+            foreach (Team t in prevTeams)
             {
-                if (newItem == t.Name)
+                if (prevItem == t.Name)
                 {
                     foreach (Player player in t.Players)
                     {
@@ -66,7 +77,7 @@ namespace InfoSystemNBATeams
             }
             try
             {
-                foreach (Team team in wnd.teams)
+                foreach (Team team in prevTeams)
                 {
                     foreach (Player player in team.Players)
                     {
@@ -85,11 +96,24 @@ namespace InfoSystemNBATeams
 
         private void editPlayerStats_Click(object sender, RoutedEventArgs e)
         {
-            EditStats editStats = new EditStats(this);
-            editStats.teamName.Text = wnd.item;
-            editStats.Show();
-            wnd.teamRoster.Items.Clear();
+            Pages.CreatePlayerPage.name.Clear();
+            Pages.CreatePlayerPage.number.Clear();
+            Pages.CreatePlayerPage.position.Clear();
+            Pages.CreatePlayerPage.heightWeight.Clear();
+            Pages.CreatePlayerPage.yearOfDraft.Clear();
+            Pages.CreatePlayerPage.ptsRbsAst.Clear();
+            Pages.CreatePlayerPage.blkStlTo.Clear();
+            Pages.CreatePlayerPage.fgFt3pt.Clear();
+
+            NavigationService.Navigate(Pages.CreatePlayerPage);
+            Pages.CreatePlayerPage.teamName.Text = prevItem;
+            Pages.TeamPage.teamRoster.Items.Clear();
+            Pages.CreatePlayerPage.Method1(item);
+            Pages.CreatePlayerPage.Method2(prevTeams);
+            Pages.CreatePlayerPage.Method3(newFormatter);
+
         }
+
 
         private void deletePlayer_Click(object sender, RoutedEventArgs e)
         {
@@ -101,12 +125,14 @@ namespace InfoSystemNBATeams
             else
             {
                 item = rosterList.SelectedItem.ToString();
+                Pages.DeletePlayerPage.Method1(item);
+                Pages.DeletePlayerPage.Method2(prevTeams);
+                Pages.DeletePlayerPage.Method3(newFormatter);
             }
-
-            DeletePlayer deletePlayer = new DeletePlayer(this);
-            deletePlayer.Show();
-            wnd.teamRoster.Items.Clear();
+            NavigationService.Navigate(Pages.DeletePlayerPage);
+            Pages.TeamPage.teamRoster.Items.Clear();
         }
+
 
         private void changePlayerStats_Click(object sender, RoutedEventArgs e)
         {
@@ -118,27 +144,28 @@ namespace InfoSystemNBATeams
             else
             {
                 item = rosterList.SelectedItem.ToString();
+                Pages.ChangeStatsPage.Method1(item);
+                Pages.ChangeStatsPage.Method2(prevTeams);
+                Pages.ChangeStatsPage.Method3(newFormatter);
             }
 
-            ChangeStats changeStats = new ChangeStats(this);
-            changeStats.Show();
-            wnd.teamRoster.Items.Clear();
-
+            NavigationService.Navigate(Pages.ChangeStatsPage);
+            Pages.TeamPage.teamRoster.Items.Clear();
             try
             {
-                foreach (Team team in wnd.teams)
+                foreach (Team team in prevTeams)
                 {
                     foreach (Player player in team.Players)
                     {
                         if (item == player.Name)
                         {
-                            changeStats.number.Text = player.NumberOfPlayer.ToString();
-                            changeStats.position.Text = player.Position;
-                            changeStats.heightWeight.Text = player.Growth + ";" + player.Weight;
-                            changeStats.yearOfDraft.Text = player.YearOfDraft.ToString();
-                            changeStats.ptsRbsAst.Text = player.PPG + ";" + player.RPG + ";" + player.APG;
-                            changeStats.blkStlTo.Text = player.BPG + ";" + player.SPG + ";" + player.TPG;
-                            changeStats.fgFt3pt.Text = player.FGPercentage + ";" + player.FTPercentage + ";" + player.ThreeptPercentage;
+                            Pages.ChangeStatsPage.number.Text = player.NumberOfPlayer.ToString();
+                            Pages.ChangeStatsPage.position.Text = player.Position;
+                            Pages.ChangeStatsPage.heightWeight.Text = player.Growth + ";" + player.Weight;
+                            Pages.ChangeStatsPage.yearOfDraft.Text = player.YearOfDraft.ToString();
+                            Pages.ChangeStatsPage.ptsRbsAst.Text = player.PPG + ";" + player.RPG + ";" + player.APG;
+                            Pages.ChangeStatsPage.blkStlTo.Text = player.BPG + ";" + player.SPG + ";" + player.TPG;
+                            Pages.ChangeStatsPage.fgFt3pt.Text = player.FGPercentage + ";" + player.FTPercentage + ";" + player.ThreeptPercentage;
                         }
                     }
                 }
@@ -147,6 +174,13 @@ namespace InfoSystemNBATeams
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void goBack_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(Pages.TeamPage);
+            Pages.TeamPage.readTXT_Click(this, e);
+            Pages.TeamPage.searchBox.Clear();
         }
     }
 }
