@@ -56,7 +56,6 @@ namespace InfoSystemNBATeams
                     MessageBox.Show(" Все поля должны быть непустыми. ");
                     return;
                 }
-
                 string name = item;
 
                 int numOfPlayer = int.Parse(number.Text);
