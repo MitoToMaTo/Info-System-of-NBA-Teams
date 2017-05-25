@@ -5,20 +5,20 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:InfoSystemNBATeams"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
-      Title="ChangeTeamInfo">
+      d:DesignHeight="500" d:DesignWidth="700"
+      Title="InfoSystemNBATeams">
 
     <Grid>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="147,24,0,0" TextWrapping="Wrap" Text="Название команды" VerticalAlignment="Top" Height="23" Width="120"/>
-        <TextBox x:Name="teamName" HorizontalAlignment="Left" Height="23" Margin="10,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.059,-1.081"/>
-        <TextBox x:Name="coachName" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="10,52,0,0"/>
-        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="147,52,0,0" TextWrapping="Wrap" Text="Имя тренера" VerticalAlignment="Top" Height="23" Width="120"/>
-        <TextBox x:Name="numWins" HorizontalAlignment="Left" Height="23" Margin="10,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="147,80,0,0" TextWrapping="Wrap" Text="Число побед" VerticalAlignment="Top" Height="23" Width="120"/>
-        <TextBox x:Name="numLoses" HorizontalAlignment="Left" Height="23" Margin="10,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="147,108,0,0" TextWrapping="Wrap" Text="Число поражений" VerticalAlignment="Top" RenderTransformOrigin="0.566,1.158" Height="23" Width="120"/>
-        <Button x:Name="change" Content="Изменить" HorizontalAlignment="Left" Margin="10,239,0,0" VerticalAlignment="Top" Width="75" Click="change_Click"/>
-        <Button x:Name="goBack" Content="Назад" HorizontalAlignment="Left" Margin="192,239,0,0" VerticalAlignment="Top" Width="75" Click="goBack_Click"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="211,47,0,0" TextWrapping="Wrap" Text="Название команды (Штат Название)" VerticalAlignment="Top" Height="23" Width="224"/>
+        <TextBox x:Name="teamName" HorizontalAlignment="Left" Height="23" Margin="10,47,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="166" RenderTransformOrigin="0.059,-1.081"/>
+        <TextBox x:Name="coachName" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="166" Margin="10,169,0,0"/>
+        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="211,169,0,0" TextWrapping="Wrap" Text="Имя тренера (Имя Фамилия)" VerticalAlignment="Top" Height="23" Width="199"/>
+        <TextBox x:Name="numWins" HorizontalAlignment="Left" Height="23" Margin="10,225,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="166"/>
+        <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="211,225,0,0" TextWrapping="Wrap" Text="Число побед (от 0 до 82)" VerticalAlignment="Top" Height="23" Width="183"/>
+        <TextBox x:Name="numLoses" HorizontalAlignment="Left" Height="23" Margin="10,282,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="166"/>
+        <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="211,282,0,0" TextWrapping="Wrap" Text="Число поражений (от 0 до 82)" VerticalAlignment="Top" RenderTransformOrigin="0.566,1.158" Height="23" Width="183"/>
+        <Button x:Name="change" Content="Изменить" HorizontalAlignment="Left" Margin="10,413,0,0" VerticalAlignment="Top" Width="100" Height="37" Click="change_Click"/>
+        <Button x:Name="goBack" Content="Назад" HorizontalAlignment="Left" Margin="231,413,0,0" VerticalAlignment="Top" Width="100" Height="37" Click="goBack_Click"/>
 
     </Grid>
 </Page>

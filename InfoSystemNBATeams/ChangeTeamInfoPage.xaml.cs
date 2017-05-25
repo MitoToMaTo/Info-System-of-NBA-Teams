@@ -24,9 +24,15 @@ namespace InfoSystemNBATeams
     public partial class ChangeTeamInfoPage : Page
     {
         string name;
-        List<Team> tteams;
-        XmlSerializer fformatter;
+        string coach;
+        List<Team> prevTeams;
+        XmlSerializer newFormatter;
 
+        public string Method0(string str)
+        {
+            coach = str;
+            return coach;
+        }
         public string Method1(string sr)
         {
             name = sr;
@@ -35,14 +41,14 @@ namespace InfoSystemNBATeams
 
         public List<Team> Method2(List<Team> tms)
         {
-            tteams = tms;
-            return tteams;
+            prevTeams = tms;
+            return prevTeams;
         }
 
         public XmlSerializer Method3(XmlSerializer xmls)
         {
-            fformatter = xmls;
-            return fformatter;
+            newFormatter = xmls;
+            return newFormatter;
         }
 
         public ChangeTeamInfoPage()
@@ -62,7 +68,31 @@ namespace InfoSystemNBATeams
                 }
 
                 string newTeamName = Pages.FirstUpper(teamName.Text);
+                foreach (Team team in prevTeams)
+                {
+                    if (newTeamName != name)
+                    {
+                        if (newTeamName == team.Name)
+                        {
+                            MessageBox.Show(" Недопустимо 2 одинаковых названия команд. ");
+                            teamName.Clear();
+                            return;
+                        }
+                    }
+                }
                 string nameOfCoach = Pages.FirstUpper(coachName.Text);
+                foreach (Team team in prevTeams)
+                {
+                    if (nameOfCoach != coach)
+                    {
+                        if (nameOfCoach == team.NameOfCoach)
+                        {
+                            MessageBox.Show(" Этот тренер уже тренирует одну из команд. ");
+                            coachName.Clear();
+                            return;
+                        }
+                    }
+                }
                 int teamWins = int.Parse(numWins.Text);
                 int teamLoses = int.Parse(numLoses.Text);
 
@@ -70,7 +100,7 @@ namespace InfoSystemNBATeams
                 {
                     using (StreamWriter sw = new StreamWriter("../../Players.txt"))
                     {
-                        foreach (Team team in tteams)
+                        foreach (Team team in prevTeams)
                         {
                             if (team.Name == name)
                             {
@@ -95,7 +125,7 @@ namespace InfoSystemNBATeams
 
                 if (File.Exists("../../Players.xml"))
                 {
-                    foreach (Team team in tteams)
+                    foreach (Team team in prevTeams)
                     {
                         if (name == team.Name)
                         {
@@ -107,7 +137,7 @@ namespace InfoSystemNBATeams
                     }
                     using (FileStream fs = new FileStream("../../Players.xml", FileMode.Open))
                     {
-                        fformatter.Serialize(fs, tteams);
+                        newFormatter.Serialize(fs, prevTeams);
                     }
                     Pages.TeamPage.readTXT_Click(this, e);
                     NavigationService.Navigate(Pages.TeamPage);

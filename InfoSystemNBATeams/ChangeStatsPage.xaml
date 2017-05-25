@@ -5,26 +5,26 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:InfoSystemNBATeams"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
-      Title="ChangeStats">
+      d:DesignHeight="500" d:DesignWidth="700"
+      Title="InfoSystemNBATeams">
 
     <Grid>
-        <TextBox x:Name="number" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="149,10,0,0" TextWrapping="Wrap" Text="Номер игрока" VerticalAlignment="Top" RenderTransformOrigin="-0.031,1" Height="23" Width="105"/>
-        <TextBox x:Name="position" HorizontalAlignment="Left" Height="23" Margin="10,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="149,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="23" Width="105" Text="Позиция"/>
-        <TextBox x:Name="heightWeight" HorizontalAlignment="Left" Height="23" Margin="10,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="149,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="23" Width="105"><Run Text="Рост"/><Run Text=";"/><Run Text="вес"/></TextBlock>
-        <TextBox x:Name="yearOfDraft" HorizontalAlignment="Left" Height="23" Margin="10,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="149,94,0,0" TextWrapping="Wrap" Text="Год драфта" VerticalAlignment="Top" Height="23" Width="105"/>
-        <TextBox x:Name="ptsRbsAst" HorizontalAlignment="Left" Height="23" Margin="10,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBlock x:Name="textBlock4" HorizontalAlignment="Left" Margin="149,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="23" Width="115"><Run Text="Очки"/><Run Text=";"/><Run Text="подборы"/><Run Text=";"/><Run Text="пасы"/></TextBlock>
-        <TextBox x:Name="blkStlTo" HorizontalAlignment="Left" Height="23" Margin="10,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBlock x:Name="textBlock5" HorizontalAlignment="Left" Margin="149,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="23" Width="115"><Run Text="Стилы"/><Run Text=";"/><Run Text="блоки"/><Run Text=";"/><Run Text="потери"/></TextBlock>
-        <TextBox x:Name="fgFt3pt" HorizontalAlignment="Left" Height="23" Margin="10,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBlock x:Name="textBlock6" HorizontalAlignment="Left" Margin="149,178,0,0" TextWrapping="Wrap" Text="FG;FT;3pt (%)" VerticalAlignment="Top" Height="23" Width="115"/>
-        <Button x:Name="changePlayer" Content="Отредактировать" HorizontalAlignment="Left" Margin="10,228,0,0" VerticalAlignment="Top" Width="108" Height="31" Click="changePlayer_Click"/>
-        <Button x:Name="goBack" Content="Назад" HorizontalAlignment="Left" Margin="170,228,0,0" VerticalAlignment="Top" Width="84" Height="31" Click="goBack_Click"/>
+        <TextBox x:Name="number" HorizontalAlignment="Left" Height="23" Margin="10,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="176"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="229,48,0,0" TextWrapping="Wrap" Text="Номер игрока (от 0 до 99)" VerticalAlignment="Top" RenderTransformOrigin="-0.031,1" Height="23" Width="199"/>
+        <TextBox x:Name="position" HorizontalAlignment="Left" Height="23" Margin="10,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="176"/>
+        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="229,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="23" Width="177" Text="Позиция (PG, SG, SF, PF или C)"/>
+        <TextBox x:Name="heightWeight" HorizontalAlignment="Left" Height="23" Margin="10,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="176"/>
+        <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="229,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="23" Width="105"><Run Text="Рост;"/><Run Text="вес (См и кг)"/></TextBlock>
+        <TextBox x:Name="yearOfDraft" HorizontalAlignment="Left" Height="23" Margin="10,186,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="176"/>
+        <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="229,186,0,0" TextWrapping="Wrap" Text="Год драфта" VerticalAlignment="Top" Height="23" Width="105"/>
+        <TextBox x:Name="ptsRbsAst" HorizontalAlignment="Left" Height="23" Margin="10,228,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="176"/>
+        <TextBlock x:Name="textBlock4" HorizontalAlignment="Left" Margin="229,228,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="23" Width="263"><Run Text="Очки"/><Run Text=";подборы"/><Run Text=";пасы (в среднем за матч)"/></TextBlock>
+        <TextBox x:Name="blkStlTo" HorizontalAlignment="Left" Height="23" Margin="10,272,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="176"/>
+        <TextBlock x:Name="textBlock5" HorizontalAlignment="Left" Margin="229,272,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="23" Width="263"><Run Text="Перехваты"/><Run Text=";блоки;потери (в среднем за матч)"/></TextBlock>
+        <TextBox x:Name="fgFt3pt" HorizontalAlignment="Left" Height="23" Margin="10,313,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="176"/>
+        <TextBlock x:Name="textBlock6" HorizontalAlignment="Left" Margin="229,313,0,0" TextWrapping="Wrap" Text="FG;FT;3pt (в процентах в среднем за матч)" VerticalAlignment="Top" Height="23" Width="263"/>
+        <Button x:Name="changePlayer" Content="Изменить" HorizontalAlignment="Left" Margin="10,419,0,0" VerticalAlignment="Top" Width="100" Height="37" Click="changePlayer_Click"/>
+        <Button x:Name="goBack" Content="Назад" HorizontalAlignment="Left" Margin="271,419,0,0" VerticalAlignment="Top" Width="100" Height="37" Click="goBack_Click"/>
 
     </Grid>
 </Page>

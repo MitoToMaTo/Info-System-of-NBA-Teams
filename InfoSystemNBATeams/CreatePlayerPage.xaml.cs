@@ -59,6 +59,18 @@ namespace InfoSystemNBATeams
                 }
 
                 string nameOfPlayer = Pages.FirstUpper(name.Text);
+                foreach (Team team in prevTeams)
+                {
+                    foreach (Player player in team.Players)
+                    {
+                        if (nameOfPlayer == player.Name)
+                        {
+                            MessageBox.Show(" Этот игрок уже играет в одной из команд. ");
+                            name.Clear();
+                            return;
+                        }
+                    }
+                }
                 int numOfPlayer = int.Parse(number.Text);
                 string pos = position.Text.ToUpper();
                 string[] mass1 = heightWeight.Text.Split(';');

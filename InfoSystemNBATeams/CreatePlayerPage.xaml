@@ -5,29 +5,29 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:InfoSystemNBATeams"
       mc:Ignorable="d" 
-      d:DesignHeight="400" d:DesignWidth="300"
-      Title="EditStats">
+      d:DesignHeight="500" d:DesignWidth="700"
+      Title="InfoSystemNBATeams">
 
     <Grid>
-        <TextBox x:Name="name" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="149,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="23" Width="109" Text="Имя игрока"/>
-        <TextBox x:Name="number" HorizontalAlignment="Left" Height="23" Margin="10,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="149,38,0,0" TextWrapping="Wrap" Text="Номер игрока" VerticalAlignment="Top" Height="23" Width="109"/>
-        <TextBox x:Name="position" HorizontalAlignment="Left" Height="23" Margin="10,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="149,66,0,0" TextWrapping="Wrap" Text="Позиция" VerticalAlignment="Top" Height="23" Width="109"/>
-        <TextBox x:Name="heightWeight" HorizontalAlignment="Left" Height="23" Margin="10,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="149,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="23" Width="109" Text="Рост;вес"/>
-        <TextBox x:Name="yearOfDraft" HorizontalAlignment="Left" Height="23" Margin="10,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBlock x:Name="textBlock4" HorizontalAlignment="Left" Margin="149,122,0,0" TextWrapping="Wrap" Text="Год драфта" VerticalAlignment="Top" Height="23" Width="109"/>
-        <TextBox x:Name="ptsRbsAst" HorizontalAlignment="Left" Height="23" Margin="10,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBlock x:Name="textBlock5" HorizontalAlignment="Left" Height="23" Margin="149,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123"><Run Text="Очки"/><Run Text=";подборы"/><Run Text=";пасы"/></TextBlock>
-        <TextBox x:Name="blkStlTo" HorizontalAlignment="Left" Height="24" Margin="10,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBlock x:Name="textBlock6" HorizontalAlignment="Left" Margin="149,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="123"><Run Text="Стилы"/><Run Text=";блоки;потери"/></TextBlock>
-        <TextBox x:Name="fgFt3pt" HorizontalAlignment="Left" Height="23" Margin="10,207,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBlock x:Name="textBlock7" HorizontalAlignment="Left" Margin="149,208,0,0" TextWrapping="Wrap" Text="FG;FT;3pt (%)" VerticalAlignment="Top" Height="22" Width="123"/>
-        <Button x:Name="createNewPlayer" Content="Создать" HorizontalAlignment="Left" Margin="10,329,0,0" VerticalAlignment="Top" Width="99" Height="30" Click="createNewPlayer_Click"/>
-        <TextBox x:Name="teamName" HorizontalAlignment="Left" Height="23" Margin="10,286,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.251,-0.332"/>
-        <TextBlock x:Name="textBlock8" HorizontalAlignment="Left" Margin="149,286,0,0" TextWrapping="Wrap" Text="В какую команду" VerticalAlignment="Top" Height="23" Width="109"/>
-        <Button x:Name="goBack" Content="Назад" HorizontalAlignment="Left" Margin="166,334,0,0" VerticalAlignment="Top" Width="92" Height="25" Click="goBack_Click"/>
+        <TextBox x:Name="name" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="219"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="264,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="23" Width="162" Text="Имя игрока (Имя Фамилия)"/>
+        <TextBox x:Name="number" HorizontalAlignment="Left" Height="23" Margin="10,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="219"/>
+        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="264,51,0,0" TextWrapping="Wrap" Text="Номер игрока (от 0 до 99)" VerticalAlignment="Top" Height="23" Width="162"/>
+        <TextBox x:Name="position" HorizontalAlignment="Left" Height="23" Margin="10,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="219"/>
+        <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="264,91,0,0" TextWrapping="Wrap" Text="Позиция (PG, SG, SF, PF или C)" VerticalAlignment="Top" Height="23" Width="189"/>
+        <TextBox x:Name="heightWeight" HorizontalAlignment="Left" Height="23" Margin="10,131,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="219"/>
+        <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="264,131,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="23" Width="116" Text="Рост;вес (См и кг)"/>
+        <TextBox x:Name="yearOfDraft" HorizontalAlignment="Left" Height="23" Margin="10,168,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="219"/>
+        <TextBlock x:Name="textBlock4" HorizontalAlignment="Left" Margin="264,168,0,0" TextWrapping="Wrap" Text="Год драфта" VerticalAlignment="Top" Height="23" Width="109"/>
+        <TextBox x:Name="ptsRbsAst" HorizontalAlignment="Left" Height="23" Margin="10,205,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="219"/>
+        <TextBlock x:Name="textBlock5" HorizontalAlignment="Left" Height="23" Margin="264,205,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="238"><Run Text="Очки"/><Run Text=";подборы"/><Run Text=";пасы (в среднем за матч)"/></TextBlock>
+        <TextBox x:Name="blkStlTo" HorizontalAlignment="Left" Height="24" Margin="10,245,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="219"/>
+        <TextBlock x:Name="textBlock6" HorizontalAlignment="Left" Margin="264,245,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="267"><Run Text="Перехваты"/><Run Text=";блоки;потери (в среднем за матч)"/></TextBlock>
+        <TextBox x:Name="fgFt3pt" HorizontalAlignment="Left" Height="23" Margin="10,284,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="219"/>
+        <TextBlock x:Name="textBlock7" HorizontalAlignment="Left" Margin="264,285,0,0" TextWrapping="Wrap" Text="FG;FT;3pt (в процентах в среднем за матч)" VerticalAlignment="Top" Height="22" Width="254"/>
+        <Button x:Name="createNewPlayer" Content="Создать" HorizontalAlignment="Left" Margin="10,411,0,0" VerticalAlignment="Top" Width="100" Height="37" Click="createNewPlayer_Click"/>
+        <TextBox x:Name="teamName" HorizontalAlignment="Left" Height="23" Margin="10,341,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" RenderTransformOrigin="0.251,-0.332"/>
+        <TextBlock x:Name="textBlock8" HorizontalAlignment="Left" Margin="264,341,0,0" TextWrapping="Wrap" Text="В какую команду (можно указать другую)" VerticalAlignment="Top" Height="23" Width="238"/>
+        <Button x:Name="goBack" Content="Назад" HorizontalAlignment="Left" Margin="264,411,0,0" VerticalAlignment="Top" Width="100" Height="37" Click="goBack_Click"/>
     </Grid>
 </Page>

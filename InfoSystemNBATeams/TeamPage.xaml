@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:InfoSystemNBATeams"
       mc:Ignorable="d" 
       d:DesignHeight="500" d:DesignWidth="700"
-      Title="TeamWindow">
+      Title="InfoSystemNBATeams">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -20,11 +20,11 @@
         </Grid.ColumnDefinitions>
         <ListBox x:Name="teamList" HorizontalAlignment="Left" Height="378" Margin="10,10,0,0" VerticalAlignment="Top" Width="147"/>
         <ListBox x:Name="teamRoster" Grid.Column="1" HorizontalAlignment="Left" Height="378" Margin="10,10,0,0" VerticalAlignment="Top" Width="330"/>
-        <Button x:Name="readTXT" Content="Считать из txt" HorizontalAlignment="Left" Height="22" Margin="29,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="108" Click="readTXT_Click"/>
-        <Button x:Name="showTeamInfo" Content="Инфо команды" Grid.Column="1" HorizontalAlignment="Left" Height="36" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="97" Click="showTeamInfo_Click"/>
+        <Button x:Name="readTXT" Content="Считать из txt" HorizontalAlignment="Left" Height="36" Margin="31,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="108" Click="readTXT_Click"/>
+        <Button x:Name="showTeamInfo" Content="Информация" Grid.Column="1" HorizontalAlignment="Left" Height="36" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="97" Click="showTeamInfo_Click"/>
         <Button x:Name="showTeamRoster" Content="Состав" Grid.Column="1" HorizontalAlignment="Left" Margin="245,9,0,0" Grid.Row="1" VerticalAlignment="Top" Width="95" Height="36" Click="showTeamRoster_Click"/>
         <Button x:Name="changeTeamInfo" Content="Изменить" Grid.Column="1" HorizontalAlignment="Left" Margin="127,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="100" Height="36" Click="changeTeamInfo_Click"/>
         <TextBox x:Name="searchBox" Grid.Column="2" FontSize="15" HorizontalAlignment="Left" Height="30" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="151"/>
-        <Button x:Name="search" Content="Поиск" Grid.Column="2" HorizontalAlignment="Left" Margin="46,45,0,0" VerticalAlignment="Top" Width="115" Height="30" Click="search_Click"/>
+        <Button x:Name="search" Content="Поиск" Grid.Column="2" HorizontalAlignment="Left" Margin="46,45,0,0" VerticalAlignment="Top" Width="115" Height="36" Click="search_Click"/>
     </Grid>
 </Page>

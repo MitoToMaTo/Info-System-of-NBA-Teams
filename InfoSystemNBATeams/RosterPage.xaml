@@ -5,8 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:InfoSystemNBATeams"
       mc:Ignorable="d" 
-      d:DesignHeight="400" d:DesignWidth="700"
-      Title="Team Info" >
+      d:DesignHeight="500" d:DesignWidth="700"
+      Title="InfoSystemNBATeams" >
 
     <Grid>
         <Grid.RowDefinitions>
@@ -17,13 +17,13 @@
             <ColumnDefinition Width="151*"/>
             <ColumnDefinition Width="366*"/>
         </Grid.ColumnDefinitions>
-        <ListBox x:Name="rosterList" HorizontalAlignment="Left" Height="282" Margin="10,10,0,0" VerticalAlignment="Top" Width="131"/>
-        <ListBox x:Name="playerStats" Grid.Column="1" HorizontalAlignment="Left" Height="282" Margin="10,10,0,0" VerticalAlignment="Top" Width="346"/>
-        <Button x:Name="showPlayerStats" Content="Статистика" HorizontalAlignment="Left" Height="47" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="131" Click="showPlayerStats_Click"/>
-        <Button x:Name="editPlayerStats" Content="Добавить игрока" Grid.Column="1" HorizontalAlignment="Left" Margin="10,16,0,0" Grid.Row="1" VerticalAlignment="Top" Width="100" Height="35" Click="editPlayerStats_Click"/>
-        <Button x:Name="deletePlayer" Content="Удалить игрока" Grid.Column="1" HorizontalAlignment="Left" Margin="127,16,0,0" Grid.Row="1" VerticalAlignment="Top" Width="96" Height="35" Click="deletePlayer_Click"/>
-        <Button x:Name="changePlayerStats" Content="Редактировать" Grid.Column="1" HorizontalAlignment="Left" Margin="243,16,0,0" Grid.Row="1" VerticalAlignment="Top" Width="93" Height="35" Click="changePlayerStats_Click"/>
-        <Button x:Name="goBack" Content="Назад" Grid.Column="1" HorizontalAlignment="Left" Margin="361,16,0,0" Grid.Row="1" VerticalAlignment="Top" Width="104" Height="35" Click="goBack_Click"/>
+        <ListBox x:Name="rosterList" HorizontalAlignment="Left" Height="362" Margin="10,10,0,0" VerticalAlignment="Top" Width="131"/>
+        <ListBox x:Name="playerStats" Grid.Column="1" HorizontalAlignment="Left" Height="362" Margin="10,10,0,0" VerticalAlignment="Top" Width="449"/>
+        <Button x:Name="showPlayerStats" Content="Статистика" HorizontalAlignment="Left" Height="37" Margin="10,16,0,0" Grid.Row="1" VerticalAlignment="Top" Width="131" Click="showPlayerStats_Click"/>
+        <Button x:Name="editPlayerStats" Content="Добавить" Grid.Column="1" HorizontalAlignment="Left" Margin="10,16,0,0" Grid.Row="1" VerticalAlignment="Top" Width="100" Height="37" Click="editPlayerStats_Click"/>
+        <Button x:Name="deletePlayer" Content="Удалить" Grid.Column="1" HorizontalAlignment="Left" Margin="128,16,0,0" Grid.Row="1" VerticalAlignment="Top" Width="96" Height="37" Click="deletePlayer_Click"/>
+        <Button x:Name="changePlayerStats" Content="Изменить" Grid.Column="1" HorizontalAlignment="Left" Margin="244,16,0,0" Grid.Row="1" VerticalAlignment="Top" Width="93" Height="37" Click="changePlayerStats_Click"/>
+        <Button x:Name="goBack" Content="Назад" Grid.Column="1" HorizontalAlignment="Left" Margin="355,16,0,0" Grid.Row="1" VerticalAlignment="Top" Width="104" Height="37" Click="goBack_Click"/>
 
     </Grid>
 </Page>

@@ -201,7 +201,7 @@
         <TPG>1.6</TPG>
       </Player>
       <Player>
-        <Name>Michael Kidd-Girlchrist</Name>
+        <Name>Michael Kidd-girlchrist</Name>
         <NumberOfPlayer>27</NumberOfPlayer>
         <Position>SG</Position>
         <Growth>195</Growth>
@@ -592,7 +592,7 @@
   </Team>
   <Team>
     <Name>Houston Rockets</Name>
-    <NameOfCoach>Kevin McHale</NameOfCoach>
+    <NameOfCoach>Kevin Mchale</NameOfCoach>
     <Wins>54</Wins>
     <Loses>28</Loses>
     <Players>
@@ -651,7 +651,7 @@
   </Team>
   <Team>
     <Name>Indiana Pacers</Name>
-    <NameOfCoach>Nate McMillan</NameOfCoach>
+    <NameOfCoach>Nate Mcmillan</NameOfCoach>
     <Wins>56</Wins>
     <Loses>26</Loses>
     <Players>
@@ -968,7 +968,7 @@
         <TPG>1.8</TPG>
       </Player>
       <Player>
-        <Name>Michael Carter-Williams</Name>
+        <Name>Michael Carter-williams</Name>
         <NumberOfPlayer>1</NumberOfPlayer>
         <Position>PG</Position>
         <Growth>200</Growth>
@@ -1162,7 +1162,7 @@
         <TPG>1.8</TPG>
       </Player>
       <Player>
-        <Name>J.R. Smith</Name>
+        <Name>J.r. Smith</Name>
         <NumberOfPlayer>23</NumberOfPlayer>
         <Position>PF</Position>
         <Growth>203</Growth>

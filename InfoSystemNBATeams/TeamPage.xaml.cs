@@ -47,15 +47,48 @@ namespace InfoSystemNBATeams
                             {
                                 List<Player> players = new List<Player>();
 
-                                string teamName = sr.ReadLine();
-                                string coachName = sr.ReadLine();
+                                string teamName = Pages.FirstUpper(sr.ReadLine());
+                                foreach (Team team in teams)
+                                {
+                                    if (team.Name == teamName)
+                                    {
+                                        MessageBox.Show(" Недопустимо наличие в файле двух команд с одинаковым названием. ");
+                                        teams.Clear();
+                                        players.Clear();
+                                        return;
+                                    }
+                                }
+                                string coachName = Pages.FirstUpper(sr.ReadLine());
+                                foreach (Team team in teams)
+                                {
+                                    if(team.NameOfCoach == coachName)
+                                    {
+                                        MessageBox.Show(" Один тренер не может тренировать две команды. Проверьте информацию в файле. ");
+                                        teams.Clear();
+                                        players.Clear();
+                                        return;
+                                    }
+                                }
                                 string[] teamStats = sr.ReadLine().Split('-');
                                 int wins = int.Parse(teamStats[0]);
                                 int loses = int.Parse(teamStats[1]);
                                 sr.ReadLine();
                                 while (true)
                                 {
-                                    string playerName = sr.ReadLine();
+                                    string playerName = Pages.FirstUpper(sr.ReadLine());
+                                    foreach (Team team in teams)
+                                    {
+                                        foreach (Player player in team.Players)
+                                        {
+                                            if(player.Name == playerName)
+                                            {
+                                                MessageBox.Show(" Недопустимо наличие в файле двух игроков с одинаковым именем. ");
+                                                teams.Clear();
+                                                players.Clear();
+                                                return;
+                                            }
+                                        }
+                                    }
                                     if (playerName == "")
                                     {
                                         break;
@@ -171,6 +204,7 @@ namespace InfoSystemNBATeams
                             {
                                 Pages.ChangeTeamInfoPage.teamName.Text = team.Name;
                                 Pages.ChangeTeamInfoPage.coachName.Text = team.NameOfCoach;
+                                Pages.ChangeTeamInfoPage.Method0(team.NameOfCoach);
                                 Pages.ChangeTeamInfoPage.numWins.Text = team.Wins.ToString();
                                 Pages.ChangeTeamInfoPage.numLoses.Text = team.Loses.ToString();
                             }
@@ -188,7 +222,7 @@ namespace InfoSystemNBATeams
             }
         }
 
-        private void showTeamRoster_Click(object sender, RoutedEventArgs e)
+        public void showTeamRoster_Click(object sender, RoutedEventArgs e)
         {
             Pages.RosterPage.rosterList.Items.Clear();
             Pages.RosterPage.playerStats.Items.Clear();
@@ -249,12 +283,8 @@ namespace InfoSystemNBATeams
                         {
                             teamList.SelectedItem = team.Name;
                             teamList.ScrollIntoView(teamList.SelectedItem);
-                            NavigationService.Navigate(Pages.RosterPage);
+                            showTeamRoster_Click(this, e);
                             item = team.Name;
-                            foreach (Player newPlayer in team.Players)
-                            {
-                                Pages.RosterPage.rosterList.Items.Add(newPlayer.Name);
-                            }
                             Pages.RosterPage.rosterList.SelectedItem = player.Name;
                             Pages.RosterPage.playerStats.Items.Add(player.PlayerInfo());
                             a = true;
